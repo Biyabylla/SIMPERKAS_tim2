@@ -212,7 +212,7 @@ public class panelTransaksi extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tanggal Kembali     :");
+        jLabel7.setText("Tanggal Kembli       :");
         add(jLabel7);
         jLabel7.setBounds(40, 360, 210, 20);
         add(jdcTgl_Kembali);
@@ -239,8 +239,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(310, 100, 750, 380);
 
-        bTambah.setBackground(new java.awt.Color(51, 255, 51));
+        bTambah.setBackground(new java.awt.Color(255, 204, 0));
         bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bTambah.setForeground(new java.awt.Color(255, 255, 255));
         bTambah.setText("Tambah");
         bTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,8 +251,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(bTambah);
         bTambah.setBounds(40, 430, 90, 30);
 
-        bUbah.setBackground(new java.awt.Color(102, 153, 255));
+        bUbah.setBackground(new java.awt.Color(255, 204, 0));
         bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bUbah.setForeground(new java.awt.Color(255, 255, 255));
         bUbah.setText("Ubah");
         bUbah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,8 +263,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(bUbah);
         bUbah.setBounds(150, 430, 90, 30);
 
-        bReset.setBackground(new java.awt.Color(255, 153, 51));
+        bReset.setBackground(new java.awt.Color(255, 204, 0));
         bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bReset.setForeground(new java.awt.Color(255, 255, 255));
         bReset.setText("Reset");
         bReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,8 +275,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(bReset);
         bReset.setBounds(40, 490, 90, 30);
 
-        bHapus.setBackground(new java.awt.Color(255, 51, 51));
+        bHapus.setBackground(new java.awt.Color(255, 204, 0));
         bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bHapus.setForeground(new java.awt.Color(255, 255, 255));
         bHapus.setText("Hapus");
         bHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,8 +287,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(bHapus);
         bHapus.setBounds(150, 490, 90, 30);
 
-        bCetakPdf.setBackground(new java.awt.Color(102, 102, 255));
+        bCetakPdf.setBackground(new java.awt.Color(0, 0, 204));
         bCetakPdf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bCetakPdf.setForeground(new java.awt.Color(255, 255, 255));
         bCetakPdf.setText("Cetak PDF");
         bCetakPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,8 +299,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(bCetakPdf);
         bCetakPdf.setBounds(330, 510, 90, 30);
 
-        bResetData.setBackground(new java.awt.Color(255, 153, 51));
+        bResetData.setBackground(new java.awt.Color(0, 0, 204));
         bResetData.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bResetData.setForeground(new java.awt.Color(255, 255, 255));
         bResetData.setText("Reset Data");
         bResetData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,8 +311,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(bResetData);
         bResetData.setBounds(430, 510, 100, 30);
 
-        bRefresh.setBackground(new java.awt.Color(255, 204, 0));
+        bRefresh.setBackground(new java.awt.Color(0, 0, 204));
         bRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bRefresh.setForeground(new java.awt.Color(255, 255, 255));
         bRefresh.setText("Refresh");
         bRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,8 +323,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(bRefresh);
         bRefresh.setBounds(890, 510, 74, 30);
 
-        bCari.setBackground(new java.awt.Color(204, 204, 0));
+        bCari.setBackground(new java.awt.Color(0, 0, 204));
         bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bCari.setForeground(new java.awt.Color(255, 255, 255));
         bCari.setText("Cari");
         bCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,8 +333,9 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bCari);
-        bCari.setBounds(980, 510, 72, 30);
+        bCari.setBounds(980, 510, 80, 30);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/4.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 1090, 600);
