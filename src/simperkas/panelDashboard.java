@@ -26,19 +26,153 @@ public class panelDashboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jTextField1 = new javax.swing.JTextField();
+        Bbarang = new javax.swing.JButton();
+        Bberanda = new javax.swing.JButton();
+        Btransaksi = new javax.swing.JButton();
+        Babout = new javax.swing.JButton();
+        Blogout = new javax.swing.JButton();
+        Buser = new javax.swing.JButton();
+        TuserName = new javax.swing.JTextField();
+        Tname = new javax.swing.JTextField();
+        Username = new javax.swing.JLabel();
+        Name = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
+
+        jTextField1.setText("jTextField1");
+
+        setLayout(null);
+
+        Bbarang.setBackground(new java.awt.Color(255, 204, 0));
+        Bbarang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Bbarang.setForeground(new java.awt.Color(51, 0, 153));
+        Bbarang.setText("Barang");
+        Bbarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BbarangActionPerformed(evt);
+            }
+        });
+        add(Bbarang);
+        Bbarang.setBounds(40, 160, 210, 30);
+
+        Bberanda.setBackground(new java.awt.Color(255, 204, 0));
+        Bberanda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Bberanda.setForeground(new java.awt.Color(51, 0, 153));
+        Bberanda.setText("Beranda");
+        Bberanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BberandaActionPerformed(evt);
+            }
+        });
+        add(Bberanda);
+        Bberanda.setBounds(40, 110, 210, 30);
+
+        Btransaksi.setBackground(new java.awt.Color(255, 204, 0));
+        Btransaksi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Btransaksi.setForeground(new java.awt.Color(51, 0, 153));
+        Btransaksi.setText("Transaksi");
+        Btransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtransaksiActionPerformed(evt);
+            }
+        });
+        add(Btransaksi);
+        Btransaksi.setBounds(40, 210, 210, 30);
+
+        Babout.setBackground(new java.awt.Color(255, 204, 0));
+        Babout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Babout.setForeground(new java.awt.Color(51, 0, 153));
+        Babout.setText("About");
+        Babout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BaboutActionPerformed(evt);
+            }
+        });
+        add(Babout);
+        Babout.setBounds(40, 260, 210, 30);
+
+        Blogout.setBackground(new java.awt.Color(255, 204, 0));
+        Blogout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Blogout.setForeground(new java.awt.Color(51, 0, 153));
+        Blogout.setText("Logout");
+        Blogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlogoutActionPerformed(evt);
+            }
+        });
+        add(Blogout);
+        Blogout.setBounds(40, 310, 210, 30);
+
+        Buser.setBackground(new java.awt.Color(255, 204, 0));
+        Buser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Buser.setForeground(new java.awt.Color(51, 0, 153));
+        Buser.setText("User");
+        Buser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuserActionPerformed(evt);
+            }
+        });
+        add(Buser);
+        Buser.setBounds(40, 360, 210, 30);
+        add(TuserName);
+        TuserName.setBounds(820, 430, 230, 30);
+        add(Tname);
+        Tname.setBounds(820, 510, 230, 30);
+
+        Username.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Username.setForeground(new java.awt.Color(255, 255, 255));
+        Username.setText("Username :");
+        add(Username);
+        Username.setBounds(820, 410, 230, 16);
+
+        Name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Name.setForeground(new java.awt.Color(255, 255, 255));
+        Name.setText("Nama :");
+        add(Name);
+        Name.setBounds(820, 490, 230, 16);
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/SIMPERKAS DASHBOARD.gif"))); // NOI18N
+        add(Background);
+        Background.setBounds(0, 0, 1100, 600);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BbarangActionPerformed
+
+    private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BberandaActionPerformed
+
+    private void BtransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtransaksiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtransaksiActionPerformed
+
+    private void BaboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaboutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BaboutActionPerformed
+
+    private void BlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BlogoutActionPerformed
+
+    private void BuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Babout;
+    private javax.swing.JLabel Background;
+    private javax.swing.JButton Bbarang;
+    private javax.swing.JButton Bberanda;
+    private javax.swing.JButton Blogout;
+    private javax.swing.JButton Btransaksi;
+    private javax.swing.JButton Buser;
+    private javax.swing.JLabel Name;
+    private javax.swing.JTextField Tname;
+    private javax.swing.JTextField TuserName;
+    private javax.swing.JLabel Username;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
