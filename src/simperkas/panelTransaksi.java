@@ -176,7 +176,7 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(40, 110, 210, 20);
         add(tNamaSantri);
-        tNamaSantri.setBounds(40, 130, 210, 22);
+        tNamaSantri.setBounds(40, 130, 250, 22);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -184,7 +184,7 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(40, 160, 140, 20);
         add(tNoKamar);
-        tNoKamar.setBounds(40, 180, 210, 22);
+        tNoKamar.setBounds(40, 180, 250, 22);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,7 +192,7 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(jLabel4);
         jLabel4.setBounds(40, 210, 210, 20);
         add(tNamaBarang);
-        tNamaBarang.setBounds(40, 230, 210, 22);
+        tNamaBarang.setBounds(40, 230, 250, 22);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,7 +200,7 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(jLabel5);
         jLabel5.setBounds(40, 260, 210, 20);
         add(tJumlah);
-        tJumlah.setBounds(40, 280, 210, 22);
+        tJumlah.setBounds(40, 280, 250, 22);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -208,15 +208,15 @@ public class panelTransaksi extends javax.swing.JPanel {
         add(jLabel6);
         jLabel6.setBounds(40, 310, 210, 20);
         add(jdcTgl_Pinjam);
-        jdcTgl_Pinjam.setBounds(40, 330, 210, 22);
+        jdcTgl_Pinjam.setBounds(40, 330, 250, 22);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tanggal Kembali       :");
+        jLabel7.setText("Tanggal Kembali     :");
         add(jLabel7);
-        jLabel7.setBounds(40, 360, 210, 20);
+        jLabel7.setBounds(40, 360, 200, 20);
         add(jdcTgl_Kembali);
-        jdcTgl_Kembali.setBounds(40, 380, 210, 22);
+        jdcTgl_Kembali.setBounds(40, 380, 250, 22);
 
         tableTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,9 +237,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableTransaksi);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(310, 100, 750, 380);
+        jScrollPane1.setBounds(300, 100, 480, 400);
 
-        bTambah.setBackground(new java.awt.Color(255, 204, 0));
+        bTambah.setBackground(new java.awt.Color(0, 0, 204));
         bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bTambah.setForeground(new java.awt.Color(255, 255, 255));
         bTambah.setText("Tambah");
@@ -249,9 +249,9 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bTambah);
-        bTambah.setBounds(40, 430, 90, 30);
+        bTambah.setBounds(40, 420, 110, 30);
 
-        bUbah.setBackground(new java.awt.Color(255, 204, 0));
+        bUbah.setBackground(new java.awt.Color(0, 0, 204));
         bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bUbah.setForeground(new java.awt.Color(255, 255, 255));
         bUbah.setText("Ubah");
@@ -261,9 +261,9 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bUbah);
-        bUbah.setBounds(150, 430, 90, 30);
+        bUbah.setBounds(180, 420, 110, 30);
 
-        bReset.setBackground(new java.awt.Color(255, 204, 0));
+        bReset.setBackground(new java.awt.Color(0, 0, 204));
         bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bReset.setForeground(new java.awt.Color(255, 255, 255));
         bReset.setText("Reset");
@@ -273,9 +273,9 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bReset);
-        bReset.setBounds(40, 490, 90, 30);
+        bReset.setBounds(40, 470, 110, 30);
 
-        bHapus.setBackground(new java.awt.Color(255, 204, 0));
+        bHapus.setBackground(new java.awt.Color(0, 0, 204));
         bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bHapus.setForeground(new java.awt.Color(255, 255, 255));
         bHapus.setText("Hapus");
@@ -285,7 +285,7 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bHapus);
-        bHapus.setBounds(150, 490, 90, 30);
+        bHapus.setBounds(180, 470, 110, 30);
 
         bCetakPdf.setBackground(new java.awt.Color(0, 0, 204));
         bCetakPdf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -297,7 +297,7 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bCetakPdf);
-        bCetakPdf.setBounds(330, 510, 90, 30);
+        bCetakPdf.setBounds(300, 510, 100, 30);
 
         bResetData.setBackground(new java.awt.Color(0, 0, 204));
         bResetData.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -309,7 +309,7 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bResetData);
-        bResetData.setBounds(430, 510, 100, 30);
+        bResetData.setBounds(410, 510, 100, 30);
 
         bRefresh.setBackground(new java.awt.Color(0, 0, 204));
         bRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -321,7 +321,7 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bRefresh);
-        bRefresh.setBounds(890, 510, 74, 30);
+        bRefresh.setBounds(614, 510, 80, 30);
 
         bCari.setBackground(new java.awt.Color(0, 0, 204));
         bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -333,12 +333,12 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         });
         add(bCari);
-        bCari.setBounds(980, 510, 80, 30);
+        bCari.setBounds(700, 510, 80, 30);
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/4.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Transaksi.png"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 1090, 600);
+        jLabel1.setBounds(0, 0, 820, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
