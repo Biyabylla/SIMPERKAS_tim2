@@ -4,10 +4,14 @@
  */
 package simperkas;
 
-/**
- *
- * @author Nabila
- */
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
+
 public class panelUser extends javax.swing.JPanel {
 
     /**
@@ -26,19 +30,17 @@ public class panelUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        Background = new javax.swing.JLabel();
+
+        setLayout(null);
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/5.png"))); // NOI18N
+        add(Background);
+        Background.setBounds(0, 0, 1100, 600);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     // End of variables declaration//GEN-END:variables
 }

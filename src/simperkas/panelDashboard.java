@@ -131,9 +131,9 @@ public class panelDashboard extends javax.swing.JPanel {
         add(Name);
         Name.setBounds(820, 490, 230, 16);
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/SIMPERKAS DASHBOARD.gif"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Dashboard simperkas.gif"))); // NOI18N
         add(Background);
-        Background.setBounds(0, 0, 1100, 600);
+        Background.setBounds(0, 0, 1120, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbarangActionPerformed
