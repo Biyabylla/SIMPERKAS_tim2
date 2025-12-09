@@ -4,6 +4,13 @@
  */
 package simperkas;
 
+import kelas.Koneksi;
+import kelas.Perkakas;
+import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import static kelas.Koneksi.connect;
+
 /**
  *
  * @author Nabila
@@ -13,8 +20,130 @@ public class panelBarang extends javax.swing.JPanel {
     /**
      * Creates new form panelBarang
      */
+    DefaultTableModel modelTransaksi;
+
     public panelBarang() {
         initComponents();
+        modelTransaksi = new DefaultTableModel();
+        modelTransaksi.addColumn("ID Perkakas");
+        modelTransaksi.addColumn("Nama Perkakas");
+        modelTransaksi.addColumn("Jumlah");
+        modelTransaksi.addColumn("Status");
+
+        tbPerkakas.setModel(modelTransaksi);
+        
+
+        loadData();
+    }
+
+    private void loadData() {
+        modelTransaksi.setRowCount(0);
+        Perkakas pks = new Perkakas();
+        try (ResultSet rs = pks.tampilBarang()) {
+            while (rs != null && rs.next()) {
+                modelTransaksi.addRow(new Object[]{
+                    rs.getString("id_barang"),
+                    rs.getString("nama_barang"),
+                    rs.getInt("jumlah"),
+                    rs.getString("status")
+                });
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Gagal menampilkan data: " + e.getMessage());
+        }
+    }
+
+    private void simpanData() {
+        String nama = tNamaPerkakas.getText();
+        int jumlah = Integer.parseInt(tJumlah.getText());
+        String status;
+
+        if (jumlah > 0) {
+            status = "Tersedia";
+        } else {
+            status = "Tidak Tersedia";
+        }
+
+        try {
+            Connection conn = connect();
+            PreparedStatement ps = conn.prepareStatement(
+                    "INSERT INTO barang (nama_barang, jumlah, status) VALUES (?, ?, ?)"
+            );
+            ps.setString(1, nama);
+            ps.setInt(2, jumlah);
+            ps.setString(3, status);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+            loadData();
+            reset();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+
+    private String buatIdBarang() {
+        String newId = "PM001";
+
+        try (Connection conn = Koneksi.connect()) {
+
+            String sql = "SELECT id_barang FROM barang ORDER BY id_barang ASC";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            int expected = 1;
+
+            while (rs.next()) {
+                String id = rs.getString("id_barang");
+                int num = Integer.parseInt(id.substring(2));
+
+                if (num != expected) {
+                    break;
+                }
+
+                expected++;
+            }
+
+            newId = String.format("PM%03d", expected);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return newId;
+    }
+
+    private void cariData(String keyword) {
+        modelTransaksi.setRowCount(0);
+        try (Connection conn = connect(); PreparedStatement pst = conn.prepareStatement(
+                "SELECT id_barang, nama_barang, jumlah, status FROM barang WHERE nama_barang LIKE ?")) {
+
+            pst.setString(1, "%" + keyword + "%");
+
+            try (ResultSet rs = pst.executeQuery()) {
+                boolean ketemu = false;
+
+                while (rs.next()) {
+                    ketemu = true;
+                    modelTransaksi.addRow(new Object[]{
+                        rs.getString("id_barang"),
+                        rs.getString("nama_barang"),
+                        rs.getInt("jumlah"),
+                        rs.getString("status")
+                    });
+                }
+                if (!ketemu) {
+                    JOptionPane.showMessageDialog(this, "Data tidak ditemukan!");
+                    loadData();
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error saat mencari: " + e.getMessage());
+        }
+    }
+
+    void reset() {
+        tNamaPerkakas.setText(null);
+        tJumlah.setText(null);
     }
 
     /**
@@ -26,19 +155,219 @@ public class panelBarang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        lNamaPerkakas = new javax.swing.JLabel();
+        tNamaPerkakas = new javax.swing.JTextField();
+        lJumlah = new javax.swing.JLabel();
+        bTambah = new javax.swing.JButton();
+        tJumlah = new javax.swing.JTextField();
+        bUbah = new javax.swing.JButton();
+        bReset = new javax.swing.JButton();
+        bCari = new javax.swing.JButton();
+        tbBarang = new javax.swing.JScrollPane();
+        tbPerkakas = new javax.swing.JTable();
+        bHapus = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(null);
+
+        lNamaPerkakas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaPerkakas.setForeground(new java.awt.Color(255, 255, 255));
+        lNamaPerkakas.setText("Nama Perkakas        :");
+        add(lNamaPerkakas);
+        lNamaPerkakas.setBounds(40, 180, 140, 20);
+        add(tNamaPerkakas);
+        tNamaPerkakas.setBounds(40, 200, 210, 22);
+
+        lJumlah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lJumlah.setForeground(new java.awt.Color(255, 255, 255));
+        lJumlah.setText("Jumlah    :");
+        add(lJumlah);
+        lJumlah.setBounds(40, 230, 150, 20);
+
+        bTambah.setBackground(new java.awt.Color(255, 204, 0));
+        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bTambah.setForeground(new java.awt.Color(255, 255, 255));
+        bTambah.setText("Tambah");
+        bTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTambahActionPerformed(evt);
+            }
+        });
+        add(bTambah);
+        bTambah.setBounds(40, 330, 90, 30);
+        add(tJumlah);
+        tJumlah.setBounds(40, 250, 90, 22);
+
+        bUbah.setBackground(new java.awt.Color(255, 204, 0));
+        bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bUbah.setForeground(new java.awt.Color(255, 255, 255));
+        bUbah.setText("Ubah");
+        bUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bUbahActionPerformed(evt);
+            }
+        });
+        add(bUbah);
+        bUbah.setBounds(40, 370, 90, 30);
+
+        bReset.setBackground(new java.awt.Color(255, 204, 0));
+        bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bReset.setForeground(new java.awt.Color(255, 255, 255));
+        bReset.setText("Reset");
+        bReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bResetActionPerformed(evt);
+            }
+        });
+        add(bReset);
+        bReset.setBounds(150, 370, 90, 30);
+
+        bCari.setBackground(new java.awt.Color(0, 0, 204));
+        bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bCari.setForeground(new java.awt.Color(255, 255, 255));
+        bCari.setText("Cari");
+        bCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCariActionPerformed(evt);
+            }
+        });
+        add(bCari);
+        bCari.setBounds(960, 530, 90, 30);
+
+        tbPerkakas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbPerkakas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbPerkakasMouseClicked(evt);
+            }
+        });
+        tbBarang.setViewportView(tbPerkakas);
+
+        add(tbBarang);
+        tbBarang.setBounds(320, 120, 730, 402);
+
+        bHapus.setBackground(new java.awt.Color(255, 204, 0));
+        bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bHapus.setForeground(new java.awt.Color(255, 255, 255));
+        bHapus.setText("Hapus");
+        bHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bHapusActionPerformed(evt);
+            }
+        });
+        add(bHapus);
+        bHapus.setBounds(150, 330, 90, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/panelBarang.png"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 1100, 600);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
+        reset();
+    }//GEN-LAST:event_bResetActionPerformed
+
+    private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
+        int row = tbPerkakas.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data terlebih dahulu!");
+            return;
+        }
+
+        try {
+            String id = tbPerkakas.getValueAt(row, 0).toString();
+            Perkakas pks = new Perkakas();
+            pks.setIdBarang(id);
+            pks.setNama(tNamaPerkakas.getText());
+            pks.setJumlah(Integer.parseInt(tJumlah.getText()));
+            pks.setJumlahAwal(Integer.parseInt(tJumlah.getText()));
+            pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
+
+            pks.ubahBarang();
+
+            reset();
+            loadData();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Jumlah harus diisi dengan angka!");
+        }
+    }//GEN-LAST:event_bUbahActionPerformed
+
+    private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
+        try {
+            Perkakas pks = new Perkakas();
+            pks.setIdBarang(buatIdBarang());
+            pks.setNama(tNamaPerkakas.getText());
+            pks.setJumlah(Integer.parseInt(tJumlah.getText()));
+            pks.setJumlahAwal(Integer.parseInt(tJumlah.getText()));
+            
+            pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
+
+
+            pks.tambahBarang();
+
+            reset();
+            loadData();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Isi semua kolom terlebih dahulu!");
+        }
+    }//GEN-LAST:event_bTambahActionPerformed
+
+    private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
+        String keyword = JOptionPane.showInputDialog(this, "Masukkan Nama Perkakas:");
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            cariData(keyword.trim());
+        } else {
+            JOptionPane.showMessageDialog(this, "Masukkan kata kunci pencarian terlebuh dahulu!");
+        }
+    }//GEN-LAST:event_bCariActionPerformed
+
+    private void bHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHapusActionPerformed
+        int row = tbPerkakas.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data terlebih dahulu!");
+            return;
+        }
+        String nama = tbPerkakas.getValueAt(row, 1).toString();
+        Perkakas pks = new Perkakas();
+        pks.setNama(nama);
+
+        pks.Hapus();
+        loadData();
+        reset();
+    }//GEN-LAST:event_bHapusActionPerformed
+
+    private void tbPerkakasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPerkakasMouseClicked
+        int row = tbPerkakas.getSelectedRow();
+        if (row != -1) {
+            tNamaPerkakas.setText(tbPerkakas.getValueAt(row, 1).toString());
+        tJumlah.setText(tbPerkakas.getValueAt(row, 2).toString());
+        }
+    }//GEN-LAST:event_tbPerkakasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCari;
+    private javax.swing.JButton bHapus;
+    private javax.swing.JButton bReset;
+    private javax.swing.JButton bTambah;
+    private javax.swing.JButton bUbah;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lJumlah;
+    private javax.swing.JLabel lNamaPerkakas;
+    private javax.swing.JTextField tJumlah;
+    private javax.swing.JTextField tNamaPerkakas;
+    private javax.swing.JScrollPane tbBarang;
+    private javax.swing.JTable tbPerkakas;
     // End of variables declaration//GEN-END:variables
 }
