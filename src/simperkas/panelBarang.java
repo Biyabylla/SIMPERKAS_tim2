@@ -174,18 +174,18 @@ public class panelBarang extends javax.swing.JPanel {
         lNamaPerkakas.setForeground(new java.awt.Color(255, 255, 255));
         lNamaPerkakas.setText("Nama Perkakas        :");
         add(lNamaPerkakas);
-        lNamaPerkakas.setBounds(40, 180, 140, 20);
+        lNamaPerkakas.setBounds(40, 120, 140, 20);
         add(tNamaPerkakas);
-        tNamaPerkakas.setBounds(40, 200, 210, 22);
+        tNamaPerkakas.setBounds(40, 150, 210, 22);
 
         lJumlah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lJumlah.setForeground(new java.awt.Color(255, 255, 255));
         lJumlah.setText("Jumlah    :");
         add(lJumlah);
-        lJumlah.setBounds(40, 230, 150, 20);
+        lJumlah.setBounds(40, 180, 150, 20);
 
-        bTambah.setBackground(new java.awt.Color(255, 204, 0));
-        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bTambah.setBackground(new java.awt.Color(0, 0, 204));
+        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bTambah.setForeground(new java.awt.Color(255, 255, 255));
         bTambah.setText("Tambah");
         bTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -194,12 +194,12 @@ public class panelBarang extends javax.swing.JPanel {
             }
         });
         add(bTambah);
-        bTambah.setBounds(40, 330, 90, 30);
+        bTambah.setBounds(50, 310, 210, 30);
         add(tJumlah);
-        tJumlah.setBounds(40, 250, 90, 22);
+        tJumlah.setBounds(40, 200, 90, 22);
 
-        bUbah.setBackground(new java.awt.Color(255, 204, 0));
-        bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bUbah.setBackground(new java.awt.Color(0, 0, 204));
+        bUbah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bUbah.setForeground(new java.awt.Color(255, 255, 255));
         bUbah.setText("Ubah");
         bUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -208,10 +208,10 @@ public class panelBarang extends javax.swing.JPanel {
             }
         });
         add(bUbah);
-        bUbah.setBounds(40, 370, 90, 30);
+        bUbah.setBounds(50, 370, 210, 30);
 
-        bReset.setBackground(new java.awt.Color(255, 204, 0));
-        bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bReset.setBackground(new java.awt.Color(0, 0, 204));
+        bReset.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bReset.setForeground(new java.awt.Color(255, 255, 255));
         bReset.setText("Reset");
         bReset.addActionListener(new java.awt.event.ActionListener() {
@@ -220,9 +220,9 @@ public class panelBarang extends javax.swing.JPanel {
             }
         });
         add(bReset);
-        bReset.setBounds(150, 370, 90, 30);
+        bReset.setBounds(50, 490, 210, 30);
 
-        bCari.setBackground(new java.awt.Color(0, 0, 204));
+        bCari.setBackground(new java.awt.Color(0, 51, 153));
         bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bCari.setForeground(new java.awt.Color(255, 255, 255));
         bCari.setText("Cari");
@@ -232,7 +232,7 @@ public class panelBarang extends javax.swing.JPanel {
             }
         });
         add(bCari);
-        bCari.setBounds(960, 530, 90, 30);
+        bCari.setBounds(690, 530, 90, 30);
 
         tbPerkakas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -253,10 +253,10 @@ public class panelBarang extends javax.swing.JPanel {
         tbBarang.setViewportView(tbPerkakas);
 
         add(tbBarang);
-        tbBarang.setBounds(320, 120, 730, 402);
+        tbBarang.setBounds(290, 110, 490, 410);
 
-        bHapus.setBackground(new java.awt.Color(255, 204, 0));
-        bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bHapus.setBackground(new java.awt.Color(0, 0, 204));
+        bHapus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bHapus.setForeground(new java.awt.Color(255, 255, 255));
         bHapus.setText("Hapus");
         bHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -265,11 +265,11 @@ public class panelBarang extends javax.swing.JPanel {
             }
         });
         add(bHapus);
-        bHapus.setBounds(150, 330, 90, 30);
+        bHapus.setBounds(50, 430, 210, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/panelBarang.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Barang.png"))); // NOI18N
         add(jLabel1);
-        jLabel1.setBounds(0, 0, 1100, 600);
+        jLabel1.setBounds(0, 0, 850, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
