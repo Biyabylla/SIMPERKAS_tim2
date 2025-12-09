@@ -212,7 +212,7 @@ public class panelTransaksi extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tanggal Kembli       :");
+        jLabel7.setText("Tanggal Kembali       :");
         add(jLabel7);
         jLabel7.setBounds(40, 360, 210, 20);
         add(jdcTgl_Kembali);
