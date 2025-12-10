@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import test_simperkas.Home;
+import simperkas.Home;
 
 public class User {
     private String userName, userPassword, userfullName;

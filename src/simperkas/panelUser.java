@@ -30,17 +30,16 @@ public class panelUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Background = new javax.swing.JLabel();
+        Bguser = new javax.swing.JLabel();
 
-        setLayout(null);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/5.png"))); // NOI18N
-        add(Background);
-        Background.setBounds(0, 0, 1100, 600);
+        Bguser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Transaksi.png"))); // NOI18N
+        add(Bguser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 600));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Background;
+    private javax.swing.JLabel Bguser;
     // End of variables declaration//GEN-END:variables
 }
