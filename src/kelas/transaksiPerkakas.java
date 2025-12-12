@@ -18,6 +18,7 @@ import java.io.*;
  * @author Nabila
  */
 public class transaksiPerkakas extends koneksi{
+    //Deklarasi Atribut untuk menyimpan data peminjaman
     private String idPeminjaman;
     private String namaSantri;
     private int nomorKamar;
@@ -26,6 +27,7 @@ public class transaksiPerkakas extends koneksi{
     private Date tanggalPinjam;
     private Date tanggalKembali;
 
+    //mengisi variabel
     public void setIdPeminjaman(String id) {
         this.idPeminjaman = id;
     }
@@ -55,13 +57,13 @@ public class transaksiPerkakas extends koneksi{
     }
 
     public boolean Tambah() {
-        try (Connection conn = connect()) {
+        try (Connection conn = connect()) {//membuka koneksi ke database
             String qSantri = "SELECT id_santri FROM santri WHERE nama_santri=? AND nomor_kamar=?";
             Integer idSantri = null;
-            try (PreparedStatement ps = conn.prepareStatement(qSantri)) {
-                ps.setString(1, namaSantri);
+            try (PreparedStatement ps = conn.prepareStatement(qSantri)) {//menjalankan query
+                ps.setString(1, namaSantri);//isi parameter
                 ps.setInt(2, nomorKamar);
-                try (ResultSet rs = ps.executeQuery()) {
+                try (ResultSet rs = ps.executeQuery()) {//hasil query
                     if (rs.next()) {
                         idSantri = rs.getInt("id_santri");
                     }
@@ -235,7 +237,7 @@ public class transaksiPerkakas extends koneksi{
     }
 
     public void tampilkanData(DefaultTableModel model) {
-        model.setRowCount(0);
+        model.setRowCount(0);//kosongkan semua baris yang ada
         String sql = "SELECT t.id_peminjaman, s.nama_santri, s.nomor_kamar, b.nama_barang, t.jumlah_pinjam, t.tanggal_pinjam, t.tanggal_kembali "
                 + "FROM transaksi t "
                 + "LEFT JOIN santri s ON t.id_santri=s.id_santri "
@@ -255,7 +257,7 @@ public class transaksiPerkakas extends koneksi{
                 });
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();//jika ada kesalahan cetak eror di console
         }
     }
 
