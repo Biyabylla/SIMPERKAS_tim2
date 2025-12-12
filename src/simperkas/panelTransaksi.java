@@ -338,7 +338,7 @@ public class panelTransaksi extends javax.swing.JPanel {
         bCari.setBounds(700, 510, 80, 30);
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Transaksi.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel transaksi2.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 820, 600);
     }// </editor-fold>//GEN-END:initComponents
