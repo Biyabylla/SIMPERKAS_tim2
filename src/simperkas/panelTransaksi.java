@@ -18,31 +18,32 @@ import kelas.koneksi;
  */
 public class panelTransaksi extends javax.swing.JPanel {
 
-    DefaultTableModel modelTransaksi;
+    DefaultTableModel modelTransaksi;//Menyimpan struktur tabel sebelum ditampilkan ke JTable
 
     /**
      * Creates new form panelTransaksi
      */
     public panelTransaksi() {
         initComponents();
-        modelTransaksi = new DefaultTableModel(new Object[]{
+        modelTransaksi = new DefaultTableModel(new Object[]{//Membuat struktur kolom tabel
             "ID", "Nama Santri", "Nomor Kamar", "Nama Barang", "Jumlah", "Waktu Pinjam", "Waktu Kembali"
         }, 0);
 
-        tableTransaksi.setModel(modelTransaksi);
+        tableTransaksi.setModel(modelTransaksi);//Menghubungkan model ke JTable
 
+        //Menyembunyikan kolom ID
         tableTransaksi.getColumnModel().getColumn(0).setMinWidth(0);
         tableTransaksi.getColumnModel().getColumn(0).setMaxWidth(0);
         tableTransaksi.getColumnModel().getColumn(0).setWidth(0);
 
-        tampilkanData();
+        tampilkanData();//memanggil method tampilkan data
 
     }
 
     private void loadData() {
-        transaksiPerkakas t = new transaksiPerkakas();
-        modelTransaksi.setRowCount(0);
-        t.tampilkanData(modelTransaksi);
+        transaksiPerkakas t = new transaksiPerkakas();//Membuat object transaksiPerkakas
+        modelTransaksi.setRowCount(0);//kosongkan semua baris yang ada
+        t.tampilkanData(modelTransaksi);//Panggil method untuk memasukkan data ke tabel
     }
 
     private void tampilkanData() {
@@ -55,7 +56,7 @@ public class panelTransaksi extends javax.swing.JPanel {
                 + "LEFT JOIN barang b ON t.id_barang = b.id_barang "
                 + "ORDER BY t.tanggal_pinjam DESC";
 
-        try (Connection conn = koneksi.connect(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = koneksi.connect(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {//menjalankan query
 
             while (rs.next()) {
                 modelTransaksi.addRow(new Object[]{
@@ -76,8 +77,8 @@ public class panelTransaksi extends javax.swing.JPanel {
     private Perkakas ambilPerkakasByName(String namaBarang) {
         String sql = "SELECT id_barang, nama_barang, jumlah FROM barang WHERE LOWER(nama_barang)=LOWER(?)";
         try (Connection conn = koneksi.connect(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, namaBarang);
-            try (ResultSet rs = ps.executeQuery()) {
+            ps.setString(1, namaBarang);//isi parameter
+            try (ResultSet rs = ps.executeQuery()) {//hasil query
                 if (rs.next()) {
                     return new Perkakas(rs.getString("id_barang"), rs.getString("nama_barang"), rs.getInt("jumlah"));
                 }
@@ -89,7 +90,7 @@ public class panelTransaksi extends javax.swing.JPanel {
     }
 
     private Integer getOrCreateSantriId(Connection conn, String namaSantri, int nomorKamar) throws SQLException {
-        String q = "SELECT id_santri FROM santri WHERE nama_santri = ? AND nomor_kamar = ?";
+        String q = "SELECT id_santri FROM santri WHERE nama_santri = ? AND nomor_kamar = ?";//SQL untuk mencari santri berdasarkan nama + nomor kamar
         try (PreparedStatement ps = conn.prepareStatement(q)) {
             ps.setString(1, namaSantri);
             ps.setInt(2, nomorKamar);
@@ -100,7 +101,7 @@ public class panelTransaksi extends javax.swing.JPanel {
             }
         }
 
-        String insert = "INSERT INTO santri (nama_santri, nomor_kamar) VALUES (?, ?)";
+        String insert = "INSERT INTO santri (nama_santri, nomor_kamar) VALUES (?, ?)";//query umtuk menambah data santri
         try (PreparedStatement ps = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, namaSantri);
             ps.setInt(2, nomorKamar);
@@ -113,7 +114,7 @@ public class panelTransaksi extends javax.swing.JPanel {
                 }
             }
         }
-        return null;
+        return null;//kembalikkan null jika barang tdk ditemukan
     }
 
     private boolean validasiPengembalian() {
@@ -126,6 +127,7 @@ public class panelTransaksi extends javax.swing.JPanel {
     }
 
     private void reset() {
+        //Mengosongkan semua textfield
         tNamaSantri.setText("");
         tNoKamar.setText("");
         tNamaBarang.setText("");
@@ -432,7 +434,7 @@ public class panelTransaksi extends javax.swing.JPanel {
         t.setIdPeminjaman(idTransaksi);
         t.setTanggalKembali(tglKembali);
 
-        if (t.Kembalikan()) {
+        if (t.Kembalikan()) {//panggil method kembalikan
             JOptionPane.showMessageDialog(this, "Barang berhasil dikembalikan!");
             loadData();
             reset();
