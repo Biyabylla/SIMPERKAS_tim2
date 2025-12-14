@@ -1,21 +1,63 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package simperkas;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import kelas.User;
 
 /**
  *
- * @author Nabila
+ * @author Angga Sanjaya
  */
 public class panelUser extends javax.swing.JPanel {
+
+    private int confirm;
 
     /**
      * Creates new form panelUser
      */
     public panelUser() {
         initComponents();
+        load_table();
+        reset();
     }
+
+    void reset() {
+        tUsername.setText("");
+        tPassword.setText("");
+        tFullName.setText("");
+        cbStatus.setSelectedIndex(0);
+        tUsername.setEditable(true);
+    }
+
+    void load_table() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Username");
+        model.addColumn("FullName");
+        model.addColumn("Status");
+
+        try {
+            User usr = new User();
+            ResultSet result = usr.tampilUser();
+
+            while (result.next()) {
+                String status = (result.getInt("userStatus") == 1) ? "Active" : "Inactive";
+                model.addRow(new Object[]{
+                    result.getString("userName"),
+                    result.getString("userFullName"),
+                    status
+                });
+            }
+
+            tableUser.setModel(model);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
+        }
+    }
+
+    ;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +68,307 @@ public class panelUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableUser = new javax.swing.JTable();
+        bTambah = new javax.swing.JButton();
+        cbStatus = new javax.swing.JComboBox<>();
+        lPassword = new javax.swing.JLabel();
+        tPassword = new javax.swing.JTextField();
+        lStatus = new javax.swing.JLabel();
+        lNamaLengkap = new javax.swing.JLabel();
+        tUsername = new javax.swing.JTextField();
+        lUser = new javax.swing.JLabel();
+        tFullName = new javax.swing.JTextField();
+        bUbah = new javax.swing.JButton();
+        bHapus = new javax.swing.JButton();
+        bReset = new javax.swing.JButton();
+        bKembali = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(null);
+
+        tableUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tableUser.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableUserMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableUser);
+
+        add(jScrollPane1);
+        jScrollPane1.setBounds(320, 120, 452, 402);
+
+        bTambah.setBackground(new java.awt.Color(0, 0, 204));
+        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bTambah.setForeground(new java.awt.Color(255, 255, 255));
+        bTambah.setText("Tambah");
+        bTambah.setPreferredSize(new java.awt.Dimension(72, 27));
+        bTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTambahActionPerformed(evt);
+            }
+        });
+        add(bTambah);
+        bTambah.setBounds(50, 370, 240, 30);
+
+        cbStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active" }));
+        cbStatus.setPreferredSize(new java.awt.Dimension(72, 27));
+        add(cbStatus);
+        cbStatus.setBounds(50, 290, 240, 30);
+
+        lPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lPassword.setText("Password");
+        lPassword.setToolTipText("");
+        lPassword.setPreferredSize(new java.awt.Dimension(72, 27));
+        add(lPassword);
+        lPassword.setBounds(50, 220, 240, 16);
+
+        tPassword.setMinimumSize(new java.awt.Dimension(72, 27));
+        tPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tPasswordActionPerformed(evt);
+            }
+        });
+        add(tPassword);
+        tPassword.setBounds(50, 240, 240, 30);
+
+        lStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lStatus.setText("Status");
+        lStatus.setPreferredSize(new java.awt.Dimension(72, 27));
+        add(lStatus);
+        lStatus.setBounds(50, 270, 240, 16);
+
+        lNamaLengkap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaLengkap.setText("Nama Lengkap");
+        lNamaLengkap.setPreferredSize(new java.awt.Dimension(72, 27));
+        add(lNamaLengkap);
+        lNamaLengkap.setBounds(50, 170, 240, 16);
+
+        tUsername.setMinimumSize(new java.awt.Dimension(72, 27));
+        tUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tUsernameActionPerformed(evt);
+            }
+        });
+        add(tUsername);
+        tUsername.setBounds(50, 140, 240, 30);
+
+        lUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lUser.setText("Username");
+        lUser.setPreferredSize(new java.awt.Dimension(72, 27));
+        add(lUser);
+        lUser.setBounds(50, 120, 240, 16);
+
+        tFullName.setMinimumSize(new java.awt.Dimension(72, 27));
+        tFullName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tFullNameActionPerformed(evt);
+            }
+        });
+        add(tFullName);
+        tFullName.setBounds(50, 190, 240, 30);
+
+        bUbah.setBackground(new java.awt.Color(0, 0, 204));
+        bUbah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bUbah.setForeground(new java.awt.Color(255, 255, 255));
+        bUbah.setText("Ubah");
+        bUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bUbahActionPerformed(evt);
+            }
+        });
+        add(bUbah);
+        bUbah.setBounds(50, 410, 240, 30);
+
+        bHapus.setBackground(new java.awt.Color(0, 0, 204));
+        bHapus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bHapus.setForeground(new java.awt.Color(255, 255, 255));
+        bHapus.setText("Hapus");
+        bHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bHapusActionPerformed(evt);
+            }
+        });
+        add(bHapus);
+        bHapus.setBounds(50, 450, 240, 30);
+
+        bReset.setBackground(new java.awt.Color(0, 0, 204));
+        bReset.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bReset.setForeground(new java.awt.Color(255, 255, 255));
+        bReset.setText("Reset");
+        bReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bResetActionPerformed(evt);
+            }
+        });
+        add(bReset);
+        bReset.setBounds(50, 490, 240, 30);
+
+        bKembali.setBackground(new java.awt.Color(0, 0, 204));
+        bKembali.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bKembali.setForeground(new java.awt.Color(255, 255, 255));
+        bKembali.setText("Kembali");
+        bKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bKembaliActionPerformed(evt);
+            }
+        });
+        add(bKembali);
+        bKembali.setBounds(660, 530, 110, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel user.png"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 820, 600);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
+        // TODO add your handling code here:
+        if (tUsername.getText().trim().isEmpty() ||
+            tPassword.getText().trim().isEmpty() ||
+            tFullName.getText().trim().isEmpty())  {
+
+            JOptionPane.showMessageDialog(this, "Semua Field Harus Diisi!", 
+                    "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            User usr = new User();
+            usr.setUserName(tUsername.getText());
+            usr.setUserPassword(tPassword.getText());
+            usr.setUserFullName(tUsername.getText());
+            usr.setUserStatus(cbStatus.getSelectedIndex() == 0 ? 1 : 0);
+
+            usr.tambahUser();
+            load_table();
+            reset();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal Menambahkan Data!" + e.getMessage());
+        }
+    }//GEN-LAST:event_bTambahActionPerformed
+
+    private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
+        // TODO add your handling code here:
+        tUsername.setText(null);
+        tPassword.setText(null);
+        tFullName.setText(null);
+        cbStatus.setSelectedItem(0);
+    }//GEN-LAST:event_bResetActionPerformed
+
+    private void bHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHapusActionPerformed
+        // TODO add your handling code here:
+        String username = tUsername.getText().trim();
+
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Pillih User yang Ingin Dihapus!",
+                    "Peringatan!",
+                    JOptionPane.showConfirmDialog(null, "Apakah Anda Yakin Ingin Menghapus User \"" + username + "\"?",
+                            "Konfirmasi Hapus",
+                            JOptionPane.YES_NO_OPTION
+                    ));
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    User usr = new User();
+                    usr.setUserName(username);
+                    usr.hapusUser();
+                    JOptionPane.showMessageDialog(null, "User Berhasil Dihapus!");
+                    reset();
+                    load_table();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "User Gagal Dihapus! Periksa Koneksi Database!");
+                }
+            }
+        }
+    }//GEN-LAST:event_bHapusActionPerformed
+
+    private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
+        // TODO add your handling code here:
+        String username =       tUsername.getText().trim();
+        String password =       tPassword.getText().trim();
+        String fullName =       tFullName.getText().trim();
+        Object selectedStatus = cbStatus.getSelectedItem();
+        
+        if (username.isEmpty() || password.isEmpty() || fullName.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Semua Field Harus Diisi!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        User usr = new User();
+        usr.setUserName     (username);
+        usr.setUserPassword (password);
+        usr.setUserFullName (fullName);
+        usr.setUserStatus   ("Active".equals(selectedStatus) ? 1 : 0);
+        
+        try {
+            usr.ubahUser();
+            JOptionPane.showMessageDialog(null, "Data Berhasil diubah!");
+            reset();
+            load_table();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Data Gagal Diubah! Periksa Input atau Koneksi Database!");
+        }
+    }//GEN-LAST:event_bUbahActionPerformed
+
+    private void tPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tPasswordActionPerformed
+
+    private void tUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tUsernameActionPerformed
+
+    private void tFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFullNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tFullNameActionPerformed
+
+    private void tableUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUserMouseClicked
+        // TODO add your handling code here:
+        int baris = tableUser.rowAtPoint(evt.getPoint());
+        String userName = tableUser.getValueAt(baris, 0).toString();
+        String fullName = tableUser.getValueAt(baris, 1).toString();
+        String Status = tableUser.getValueAt(baris, 2).toString();
+
+        tUsername.setText(userName);
+        tFullName.setText(fullName);
+        cbStatus.setSelectedItem(Status);
+        tUsername.setEditable(false);
+    }//GEN-LAST:event_tableUserMouseClicked
+
+    private void bKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bKembaliActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_bKembaliActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bHapus;
+    private javax.swing.JButton bKembali;
+    private javax.swing.JButton bReset;
+    private javax.swing.JButton bTambah;
+    private javax.swing.JButton bUbah;
+    private javax.swing.JComboBox<String> cbStatus;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lNamaLengkap;
+    private javax.swing.JLabel lPassword;
+    private javax.swing.JLabel lStatus;
+    private javax.swing.JLabel lUser;
+    private javax.swing.JTextField tFullName;
+    private javax.swing.JTextField tPassword;
+    private javax.swing.JTextField tUsername;
+    private javax.swing.JTable tableUser;
     // End of variables declaration//GEN-END:variables
 }
