@@ -146,79 +146,31 @@ public class panelTransaksi extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        tNamaSantri = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        tNoKamar = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        tNamaBarang = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        tJumlah = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jdcTgl_Pinjam = new com.toedter.calendar.JDateChooser();
-        jLabel7 = new javax.swing.JLabel();
-        jdcTgl_Kembali = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableTransaksi = new javax.swing.JTable();
-        bTambah = new javax.swing.JButton();
+        lNamaSantri = new javax.swing.JLabel();
+        tNamaSantri = new javax.swing.JTextField();
+        lNomorKamar = new javax.swing.JLabel();
+        tNoKamar = new javax.swing.JTextField();
+        lNamaBarang = new javax.swing.JLabel();
+        tNamaBarang = new javax.swing.JTextField();
+        lJumlahDipinjam = new javax.swing.JLabel();
+        tJumlah = new javax.swing.JTextField();
+        lWaktuPeminjaman = new javax.swing.JLabel();
+        jdcTgl_Pinjam = new com.toedter.calendar.JDateChooser();
+        lWaktuPengembalian = new javax.swing.JLabel();
+        jdcTgl_Kembali = new com.toedter.calendar.JDateChooser();
         bUbah = new javax.swing.JButton();
+        bTambah = new javax.swing.JButton();
         bReset = new javax.swing.JButton();
         bHapus = new javax.swing.JButton();
-        bCetakPdf = new javax.swing.JButton();
-        bResetData = new javax.swing.JButton();
-        bRefresh = new javax.swing.JButton();
+        bCetakPDF = new javax.swing.JButton();
         bCari = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bRefresh = new javax.swing.JButton();
+        bResetData = new javax.swing.JButton();
+        lPanelTransaksi = new javax.swing.JLabel();
 
-        setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nama Santri             :");
-        add(jLabel2);
-        jLabel2.setBounds(40, 110, 210, 20);
-        add(tNamaSantri);
-        tNamaSantri.setBounds(40, 130, 250, 22);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nomor Kamar          :");
-        add(jLabel3);
-        jLabel3.setBounds(40, 160, 140, 20);
-        add(tNoKamar);
-        tNoKamar.setBounds(40, 180, 250, 22);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Nama Barang           :");
-        add(jLabel4);
-        jLabel4.setBounds(40, 210, 210, 20);
-        add(tNamaBarang);
-        tNamaBarang.setBounds(40, 230, 250, 22);
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Jumlah                     :");
-        add(jLabel5);
-        jLabel5.setBounds(40, 260, 210, 20);
-        add(tJumlah);
-        tJumlah.setBounds(40, 280, 250, 22);
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Tanggal Pinjam       :");
-        add(jLabel6);
-        jLabel6.setBounds(40, 310, 210, 20);
-        add(jdcTgl_Pinjam);
-        jdcTgl_Pinjam.setBounds(40, 330, 250, 22);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tanggal Kembali     :");
-        add(jLabel7);
-        jLabel7.setBounds(40, 360, 200, 20);
-        add(jdcTgl_Kembali);
-        jdcTgl_Kembali.setBounds(40, 380, 250, 22);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tableTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -238,22 +190,67 @@ public class panelTransaksi extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tableTransaksi);
 
-        add(jScrollPane1);
-        jScrollPane1.setBounds(300, 100, 480, 400);
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 740, 240));
 
-        bTambah.setBackground(new java.awt.Color(0, 0, 204));
-        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        bTambah.setForeground(new java.awt.Color(255, 255, 255));
-        bTambah.setText("Tambah");
-        bTambah.addActionListener(new java.awt.event.ActionListener() {
+        lNamaSantri.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaSantri.setText("Nama Lengkap Santri   :");
+        add(lNamaSantri, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        tNamaSantri.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tNamaSantri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bTambahActionPerformed(evt);
+                tNamaSantriActionPerformed(evt);
             }
         });
-        add(bTambah);
-        bTambah.setBounds(40, 420, 110, 30);
+        add(tNamaSantri, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 330, -1));
 
-        bUbah.setBackground(new java.awt.Color(0, 0, 204));
+        lNomorKamar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNomorKamar.setText("Nomor Kamar      :");
+        add(lNomorKamar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
+
+        tNoKamar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tNoKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tNoKamarActionPerformed(evt);
+            }
+        });
+        add(tNoKamar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 90, -1));
+
+        lNamaBarang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaBarang.setText("Nama Barang                :");
+        add(lNamaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        tNamaBarang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tNamaBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tNamaBarangActionPerformed(evt);
+            }
+        });
+        add(tNamaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 330, -1));
+
+        lJumlahDipinjam.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lJumlahDipinjam.setText("Jumlah Pinjam     :");
+        add(lJumlahDipinjam, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, -1));
+
+        tJumlah.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tJumlah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tJumlahActionPerformed(evt);
+            }
+        });
+        add(tJumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 90, -1));
+
+        lWaktuPeminjaman.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lWaktuPeminjaman.setText("Waktu Peminjaman      :");
+        add(lWaktuPeminjaman, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        add(jdcTgl_Pinjam, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 190, -1));
+
+        lWaktuPengembalian.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lWaktuPengembalian.setText("Waktu Pengembalian   :");
+        add(lWaktuPengembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, -1));
+        add(jdcTgl_Kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 190, -1));
+
+        bUbah.setBackground(new java.awt.Color(0, 51, 153));
         bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bUbah.setForeground(new java.awt.Color(255, 255, 255));
         bUbah.setText("Ubah");
@@ -262,10 +259,20 @@ public class panelTransaksi extends javax.swing.JPanel {
                 bUbahActionPerformed(evt);
             }
         });
-        add(bUbah);
-        bUbah.setBounds(180, 420, 110, 30);
+        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 120, -1));
 
-        bReset.setBackground(new java.awt.Color(0, 0, 204));
+        bTambah.setBackground(new java.awt.Color(0, 51, 153));
+        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bTambah.setForeground(new java.awt.Color(255, 255, 255));
+        bTambah.setText("Tambah");
+        bTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTambahActionPerformed(evt);
+            }
+        });
+        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 120, -1));
+
+        bReset.setBackground(new java.awt.Color(0, 51, 153));
         bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bReset.setForeground(new java.awt.Color(255, 255, 255));
         bReset.setText("Reset");
@@ -274,10 +281,9 @@ public class panelTransaksi extends javax.swing.JPanel {
                 bResetActionPerformed(evt);
             }
         });
-        add(bReset);
-        bReset.setBounds(40, 470, 110, 30);
+        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 120, -1));
 
-        bHapus.setBackground(new java.awt.Color(0, 0, 204));
+        bHapus.setBackground(new java.awt.Color(204, 0, 51));
         bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bHapus.setForeground(new java.awt.Color(255, 255, 255));
         bHapus.setText("Hapus");
@@ -286,46 +292,20 @@ public class panelTransaksi extends javax.swing.JPanel {
                 bHapusActionPerformed(evt);
             }
         });
-        add(bHapus);
-        bHapus.setBounds(180, 470, 110, 30);
+        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 120, -1));
 
-        bCetakPdf.setBackground(new java.awt.Color(0, 0, 204));
-        bCetakPdf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        bCetakPdf.setForeground(new java.awt.Color(255, 255, 255));
-        bCetakPdf.setText("Cetak PDF");
-        bCetakPdf.addActionListener(new java.awt.event.ActionListener() {
+        bCetakPDF.setBackground(new java.awt.Color(0, 51, 153));
+        bCetakPDF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bCetakPDF.setForeground(new java.awt.Color(255, 255, 255));
+        bCetakPDF.setText("Cetak PDF");
+        bCetakPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCetakPdfActionPerformed(evt);
+                bCetakPDFActionPerformed(evt);
             }
         });
-        add(bCetakPdf);
-        bCetakPdf.setBounds(300, 510, 100, 30);
+        add(bCetakPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, 30));
 
-        bResetData.setBackground(new java.awt.Color(0, 0, 204));
-        bResetData.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        bResetData.setForeground(new java.awt.Color(255, 255, 255));
-        bResetData.setText("Reset Data");
-        bResetData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bResetDataActionPerformed(evt);
-            }
-        });
-        add(bResetData);
-        bResetData.setBounds(410, 510, 100, 30);
-
-        bRefresh.setBackground(new java.awt.Color(0, 0, 204));
-        bRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        bRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        bRefresh.setText("Refresh");
-        bRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRefreshActionPerformed(evt);
-            }
-        });
-        add(bRefresh);
-        bRefresh.setBounds(614, 510, 80, 30);
-
-        bCari.setBackground(new java.awt.Color(0, 0, 204));
+        bCari.setBackground(new java.awt.Color(0, 51, 153));
         bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bCari.setForeground(new java.awt.Color(255, 255, 255));
         bCari.setText("Cari");
@@ -334,17 +314,35 @@ public class panelTransaksi extends javax.swing.JPanel {
                 bCariActionPerformed(evt);
             }
         });
-        add(bCari);
-        bCari.setBounds(700, 510, 80, 30);
+        add(bCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 100, 30));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel transaksi2.png"))); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 820, 600);
+        bRefresh.setBackground(new java.awt.Color(0, 51, 153));
+        bRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        bRefresh.setText("Refresh");
+        bRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRefreshActionPerformed(evt);
+            }
+        });
+        add(bRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 100, 30));
+
+        bResetData.setBackground(new java.awt.Color(204, 0, 51));
+        bResetData.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bResetData.setForeground(new java.awt.Color(255, 255, 255));
+        bResetData.setText("Reset Data");
+        bResetData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bResetDataActionPerformed(evt);
+            }
+        });
+        add(bResetData, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 100, 30));
+
+        lPanelTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel transaksi2.png"))); // NOI18N
+        add(lPanelTransaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
-        // TODO add your handling code here:
         String namaSantri = tNamaSantri.getText().trim();
         String namaBarang = tNamaBarang.getText().trim();
         String jumlahStr = tJumlah.getText().trim();
@@ -405,11 +403,9 @@ public class panelTransaksi extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Transaksi gagal. Periksa stok atau data input.");
         }
-
     }//GEN-LAST:event_bTambahActionPerformed
 
     private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
-        // TODO add your handling code here:
         int row = tableTransaksi.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Pilih data transaksi!");
@@ -441,16 +437,29 @@ public class panelTransaksi extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Pengembalian gagal! Periksa tanggal atau data transaksi.");
         }
-
     }//GEN-LAST:event_bUbahActionPerformed
 
-    private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
+    private void tNamaBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaBarangActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_tNamaBarangActionPerformed
+
+    private void tNamaSantriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaSantriActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tNamaSantriActionPerformed
+
+    private void tNoKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNoKamarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tNoKamarActionPerformed
+
+    private void tJumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tJumlahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tJumlahActionPerformed
+
+    private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
         reset();
     }//GEN-LAST:event_bResetActionPerformed
 
     private void bHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHapusActionPerformed
-        // TODO add your handling code here:
         int row = tableTransaksi.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Pilih data transaksi!");
@@ -467,17 +476,54 @@ public class panelTransaksi extends javax.swing.JPanel {
             reset();
         } else {
         }
-
     }//GEN-LAST:event_bHapusActionPerformed
 
-    private void bCetakPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCetakPdfActionPerformed
-        // TODO add your handling code here:
+    private void bCetakPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCetakPDFActionPerformed
         transaksiPerkakas t = new transaksiPerkakas();
         t.cetakPDF(tableTransaksi);
-    }//GEN-LAST:event_bCetakPdfActionPerformed
+    }//GEN-LAST:event_bCetakPDFActionPerformed
+
+    private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
+        String keyword = JOptionPane.showInputDialog(this, "Masukkan Nama Santri / Nomor Kamar / Nama Barang:");
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            transaksiPerkakas t = new transaksiPerkakas();
+            t.cariData(modelTransaksi, keyword.trim());
+        } else {
+            JOptionPane.showMessageDialog(this, "Masukkan kata kunci pencarian terlebih dahulu!");
+        }
+    }//GEN-LAST:event_bCariActionPerformed
+
+    private void bRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRefreshActionPerformed
+        tampilkanData();
+    }//GEN-LAST:event_bRefreshActionPerformed
+
+    private void tableTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTransaksiMouseClicked
+        int row = tableTransaksi.getSelectedRow();
+        if (row == -1) {
+            return;
+        }
+
+        tNamaSantri.setText(String.valueOf(modelTransaksi.getValueAt(row, 1)));
+        tNoKamar.setText(String.valueOf(modelTransaksi.getValueAt(row, 2)));
+        tNamaBarang.setText(String.valueOf(modelTransaksi.getValueAt(row, 3)));
+        tJumlah.setText(String.valueOf(modelTransaksi.getValueAt(row, 4)));
+
+        try {
+            String tglPinjam = String.valueOf(modelTransaksi.getValueAt(row, 5));
+            jdcTgl_Pinjam.setDate(tglPinjam != null && !tglPinjam.equals("null") ? java.sql.Date.valueOf(tglPinjam) : null);
+        } catch (Exception e) {
+            jdcTgl_Pinjam.setDate(null);
+        }
+
+        try {
+            Object tglK = modelTransaksi.getValueAt(row, 6);
+            jdcTgl_Kembali.setDate(tglK != null && !String.valueOf(tglK).equals("null") ? java.sql.Date.valueOf(String.valueOf(tglK)) : null);
+        } catch (Exception e) {
+            jdcTgl_Kembali.setDate(null);
+        }
+    }//GEN-LAST:event_tableTransaksiMouseClicked
 
     private void bResetDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetDataActionPerformed
-        // TODO add your handling code here:
         int konfirmasi = JOptionPane.showConfirmDialog(
                 this,
                 "Apakah Anda yakin ingin mereset semua data?\nHanya transaksi yang sudah dikembalikan akan dihapus.",
@@ -506,69 +552,26 @@ public class panelTransaksi extends javax.swing.JPanel {
 
     }//GEN-LAST:event_bResetDataActionPerformed
 
-    private void bRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRefreshActionPerformed
-        // TODO add your handling code here:
-        tampilkanData();
-    }//GEN-LAST:event_bRefreshActionPerformed
-
-    private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
-        // TODO add your handling code here:
-        String keyword = JOptionPane.showInputDialog(this, "Masukkan Nama Santri / Nomor Kamar / Nama Barang:");
-        if (keyword != null && !keyword.trim().isEmpty()) {
-            transaksiPerkakas t = new transaksiPerkakas();
-            t.cariData(modelTransaksi, keyword.trim());
-        } else {
-            JOptionPane.showMessageDialog(this, "Masukkan kata kunci pencarian terlebih dahulu!");
-        }
-    }//GEN-LAST:event_bCariActionPerformed
-
-    private void tableTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTransaksiMouseClicked
-        // TODO add your handling code here:
-        int row = tableTransaksi.getSelectedRow();
-        if (row == -1) {
-            return;
-        }
-
-        tNamaSantri.setText(String.valueOf(modelTransaksi.getValueAt(row, 1)));
-        tNoKamar.setText(String.valueOf(modelTransaksi.getValueAt(row, 2)));
-        tNamaBarang.setText(String.valueOf(modelTransaksi.getValueAt(row, 3)));
-        tJumlah.setText(String.valueOf(modelTransaksi.getValueAt(row, 4)));
-
-        try {
-            String tglPinjam = String.valueOf(modelTransaksi.getValueAt(row, 5));
-            jdcTgl_Pinjam.setDate(tglPinjam != null && !tglPinjam.equals("null") ? java.sql.Date.valueOf(tglPinjam) : null);
-        } catch (Exception e) {
-            jdcTgl_Pinjam.setDate(null);
-        }
-
-        try {
-            Object tglK = modelTransaksi.getValueAt(row, 6);
-            jdcTgl_Kembali.setDate(tglK != null && !String.valueOf(tglK).equals("null") ? java.sql.Date.valueOf(String.valueOf(tglK)) : null);
-        } catch (Exception e) {
-            jdcTgl_Kembali.setDate(null);
-        }
-    }//GEN-LAST:event_tableTransaksiMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCari;
-    private javax.swing.JButton bCetakPdf;
+    private javax.swing.JButton bCetakPDF;
     private javax.swing.JButton bHapus;
     private javax.swing.JButton bRefresh;
     private javax.swing.JButton bReset;
     private javax.swing.JButton bResetData;
     private javax.swing.JButton bTambah;
     private javax.swing.JButton bUbah;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdcTgl_Kembali;
     private com.toedter.calendar.JDateChooser jdcTgl_Pinjam;
+    private javax.swing.JLabel lJumlahDipinjam;
+    private javax.swing.JLabel lNamaBarang;
+    private javax.swing.JLabel lNamaSantri;
+    private javax.swing.JLabel lNomorKamar;
+    private javax.swing.JLabel lPanelTransaksi;
+    private javax.swing.JLabel lWaktuPeminjaman;
+    private javax.swing.JLabel lWaktuPengembalian;
     private javax.swing.JTextField tJumlah;
     private javax.swing.JTextField tNamaBarang;
     private javax.swing.JTextField tNamaSantri;
