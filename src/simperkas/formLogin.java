@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLClientInfoException;
 import javax.net.ssl.SSLSession;
 import javax.swing.JOptionPane;
-import kelas.Sssion;
+import kelas.Session;
 
 /**
  *
@@ -133,8 +133,8 @@ public class formLogin extends javax.swing.JFrame {
                    String USERNAME = rs.getString("USERNAME");
                    String fullName = rs.getString("userFullName");
                    
-                   Sssion.setUSERNAME = rs.getString("USERNAME");
-                   Sssion.setFULLNAME = rs.getString("userFullName");
+                   Session.setUSERNAME = rs.getString("USERNAME");
+                   Session.setFULLNAME = rs.getString("userFullName");
                    
                    dispose();
                    Home mainFrame = new Home();
@@ -148,7 +148,7 @@ public class formLogin extends javax.swing.JFrame {
                    tPASSWORD.setText("");
                }
            } catch (Exception e) {
-               JOptionPane.showMessageDialog(null, "Error koneksi:" + ex.getMessage());
+               JOptionPane.showMessageDialog(null, "Error koneksi:" + e.getMessage());
            }
                
            
