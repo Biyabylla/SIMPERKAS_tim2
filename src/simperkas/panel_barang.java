@@ -4,27 +4,28 @@
  */
 package simperkas;
 
-import kelas.Koneksi;
+import kelas.koneksi;
 import kelas.Perkakas;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import static kelas.Koneksi.connect;
+import static kelas.koneksi.connect;
 
 /**
  *
  * @author Nabila
  */
-public class panelBarang extends javax.swing.JPanel {
 
-    /**
-     * Creates new form panelBarang
-     */
+public class panel_barang extends javax.swing.JPanel {
+
     DefaultTableModel modelTransaksi;
 
-    public panelBarang() {
+    /**
+     * Creates new form panel_barang
+     */
+    public panel_barang() {
         initComponents();
-        modelTransaksi = new DefaultTableModel();
+    modelTransaksi = new DefaultTableModel();
         modelTransaksi.addColumn("ID Perkakas");
         modelTransaksi.addColumn("Nama Perkakas");
         modelTransaksi.addColumn("Jumlah");
@@ -84,7 +85,7 @@ public class panelBarang extends javax.swing.JPanel {
     private String buatIdBarang() {
         String newId = "PM001";
 
-        try (Connection conn = Koneksi.connect()) {
+        try (Connection conn = koneksi.connect()) {
 
             String sql = "SELECT id_barang FROM barang ORDER BY id_barang ASC";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -156,83 +157,34 @@ public class panelBarang extends javax.swing.JPanel {
     private void initComponents() {
 
         lNamaPerkakas = new javax.swing.JLabel();
-        tNamaPerkakas = new javax.swing.JTextField();
         lJumlah = new javax.swing.JLabel();
-        bTambah = new javax.swing.JButton();
+        tNamaPerkakas = new javax.swing.JTextField();
         tJumlah = new javax.swing.JTextField();
-        bUbah = new javax.swing.JButton();
-        bReset = new javax.swing.JButton();
-        bCari = new javax.swing.JButton();
-        tbBarang = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tbPerkakas = new javax.swing.JTable();
+        bTambah = new javax.swing.JButton();
+        bUbah = new javax.swing.JButton();
+        bRefresh = new javax.swing.JButton();
+        bReset = new javax.swing.JButton();
         bHapus = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bCari = new javax.swing.JButton();
+        lPerkakas = new javax.swing.JLabel();
 
-        setLayout(null);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lNamaPerkakas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lNamaPerkakas.setForeground(new java.awt.Color(255, 255, 255));
-        lNamaPerkakas.setText("Nama Perkakas        :");
-        add(lNamaPerkakas);
-        lNamaPerkakas.setBounds(40, 120, 140, 20);
-        add(tNamaPerkakas);
-        tNamaPerkakas.setBounds(40, 150, 210, 22);
+        lNamaPerkakas.setText("Nama Perkakas   :");
+        add(lNamaPerkakas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         lJumlah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lJumlah.setForeground(new java.awt.Color(255, 255, 255));
-        lJumlah.setText("Jumlah    :");
-        add(lJumlah);
-        lJumlah.setBounds(40, 180, 150, 20);
+        lJumlah.setText("Jumlah                 :");
+        add(lJumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
-        bTambah.setBackground(new java.awt.Color(0, 0, 204));
-        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bTambah.setForeground(new java.awt.Color(255, 255, 255));
-        bTambah.setText("Tambah");
-        bTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bTambahActionPerformed(evt);
-            }
-        });
-        add(bTambah);
-        bTambah.setBounds(50, 310, 210, 30);
-        add(tJumlah);
-        tJumlah.setBounds(40, 200, 90, 22);
+        tNamaPerkakas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(tNamaPerkakas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 590, 30));
 
-        bUbah.setBackground(new java.awt.Color(0, 0, 204));
-        bUbah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bUbah.setForeground(new java.awt.Color(255, 255, 255));
-        bUbah.setText("Ubah");
-        bUbah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bUbahActionPerformed(evt);
-            }
-        });
-        add(bUbah);
-        bUbah.setBounds(50, 370, 210, 30);
-
-        bReset.setBackground(new java.awt.Color(0, 0, 204));
-        bReset.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bReset.setForeground(new java.awt.Color(255, 255, 255));
-        bReset.setText("Reset");
-        bReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bResetActionPerformed(evt);
-            }
-        });
-        add(bReset);
-        bReset.setBounds(50, 490, 210, 30);
-
-        bCari.setBackground(new java.awt.Color(0, 51, 153));
-        bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        bCari.setForeground(new java.awt.Color(255, 255, 255));
-        bCari.setText("Cari");
-        bCari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCariActionPerformed(evt);
-            }
-        });
-        add(bCari);
-        bCari.setBounds(690, 530, 90, 30);
+        tJumlah.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(tJumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 590, 30));
 
         tbPerkakas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -250,13 +202,56 @@ public class panelBarang extends javax.swing.JPanel {
                 tbPerkakasMouseClicked(evt);
             }
         });
-        tbBarang.setViewportView(tbPerkakas);
+        jScrollPane1.setViewportView(tbPerkakas);
 
-        add(tbBarang);
-        tbBarang.setBounds(290, 110, 490, 410);
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 720, 280));
 
-        bHapus.setBackground(new java.awt.Color(0, 0, 204));
-        bHapus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bTambah.setBackground(new java.awt.Color(0, 51, 153));
+        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bTambah.setForeground(new java.awt.Color(255, 255, 255));
+        bTambah.setText("Tambah");
+        bTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTambahActionPerformed(evt);
+            }
+        });
+        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 140, 30));
+
+        bUbah.setBackground(new java.awt.Color(0, 51, 153));
+        bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bUbah.setForeground(new java.awt.Color(255, 255, 255));
+        bUbah.setText("Ubah");
+        bUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bUbahActionPerformed(evt);
+            }
+        });
+        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 150, 30));
+
+        bRefresh.setBackground(new java.awt.Color(0, 51, 153));
+        bRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        bRefresh.setText("Refresh");
+        bRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRefreshActionPerformed(evt);
+            }
+        });
+        add(bRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 540, 180, 30));
+
+        bReset.setBackground(new java.awt.Color(0, 51, 153));
+        bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bReset.setForeground(new java.awt.Color(255, 255, 255));
+        bReset.setText("Reset");
+        bReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bResetActionPerformed(evt);
+            }
+        });
+        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 130, 30));
+
+        bHapus.setBackground(new java.awt.Color(204, 0, 51));
+        bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         bHapus.setForeground(new java.awt.Color(255, 255, 255));
         bHapus.setText("Hapus");
         bHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -264,17 +259,26 @@ public class panelBarang extends javax.swing.JPanel {
                 bHapusActionPerformed(evt);
             }
         });
-        add(bHapus);
-        bHapus.setBounds(50, 430, 210, 30);
+        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 140, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Barang.png"))); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(0, 0, 850, 600);
+        bCari.setBackground(new java.awt.Color(0, 51, 153));
+        bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bCari.setForeground(new java.awt.Color(255, 255, 255));
+        bCari.setText("Cari");
+        bCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCariActionPerformed(evt);
+            }
+        });
+        add(bCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 170, 30));
+
+        lPerkakas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Barang.png"))); // NOI18N
+        add(lPerkakas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
-        reset();
-    }//GEN-LAST:event_bResetActionPerformed
+    private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bTambahActionPerformed
 
     private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
         int row = tbPerkakas.getSelectedRow();
@@ -302,36 +306,6 @@ public class panelBarang extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bUbahActionPerformed
 
-    private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
-        try {
-            Perkakas pks = new Perkakas();
-            pks.setIdBarang(buatIdBarang());
-            pks.setNama(tNamaPerkakas.getText());
-            pks.setJumlah(Integer.parseInt(tJumlah.getText()));
-            pks.setJumlahAwal(Integer.parseInt(tJumlah.getText()));
-            
-            pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
-
-
-            pks.tambahBarang();
-
-            reset();
-            loadData();
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Isi semua kolom terlebih dahulu!");
-        }
-    }//GEN-LAST:event_bTambahActionPerformed
-
-    private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
-        String keyword = JOptionPane.showInputDialog(this, "Masukkan Nama Perkakas:");
-        if (keyword != null && !keyword.trim().isEmpty()) {
-            cariData(keyword.trim());
-        } else {
-            JOptionPane.showMessageDialog(this, "Masukkan kata kunci pencarian terlebuh dahulu!");
-        }
-    }//GEN-LAST:event_bCariActionPerformed
-
     private void bHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHapusActionPerformed
         int row = tbPerkakas.getSelectedRow();
         if (row == -1) {
@@ -347,6 +321,18 @@ public class panelBarang extends javax.swing.JPanel {
         reset();
     }//GEN-LAST:event_bHapusActionPerformed
 
+    private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
+        reset();
+    }//GEN-LAST:event_bResetActionPerformed
+
+    private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCariActionPerformed
+
+    private void bRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bRefreshActionPerformed
+
     private void tbPerkakasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPerkakasMouseClicked
         int row = tbPerkakas.getSelectedRow();
         if (row != -1) {
@@ -359,15 +345,16 @@ public class panelBarang extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCari;
     private javax.swing.JButton bHapus;
+    private javax.swing.JButton bRefresh;
     private javax.swing.JButton bReset;
     private javax.swing.JButton bTambah;
     private javax.swing.JButton bUbah;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lJumlah;
     private javax.swing.JLabel lNamaPerkakas;
+    private javax.swing.JLabel lPerkakas;
     private javax.swing.JTextField tJumlah;
     private javax.swing.JTextField tNamaPerkakas;
-    private javax.swing.JScrollPane tbBarang;
     private javax.swing.JTable tbPerkakas;
     // End of variables declaration//GEN-END:variables
 }

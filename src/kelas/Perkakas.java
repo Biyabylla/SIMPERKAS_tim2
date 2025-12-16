@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
  *
  * @author Nabila
  */
-public class Perkakas extends Koneksi {
+
+public class Perkakas extends koneksi {
 
     private String id;
     private String nama;
