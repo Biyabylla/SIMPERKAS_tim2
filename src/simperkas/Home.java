@@ -5,6 +5,8 @@
 package simperkas;
 
 import javax.swing.*;
+import kelas.Sesion;
+import kelas.User;
 
 public class Home extends javax.swing.JFrame {
 
@@ -13,7 +15,15 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-
+        
+        TuserName.setText(Sesion.getUserName());
+        Tname.setText(Sesion.getFullName());
+        TuserName.setEditable(false);
+        Tname.setEditable(false);
+        Tname.setEditable(false);
+        TuserName.setFocusable(false);
+        Tname.setFocusable(false);
+                
     }
 
     /**
@@ -144,23 +154,40 @@ public class Home extends javax.swing.JFrame {
 
     private void BbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbarangActionPerformed
         // TODO add your handling code here:
-
+        pUtama.removeAll();
+        pUtama.add(new panelBarang());
+        pUtama.revalidate();
+        pUtama.repaint();
     }//GEN-LAST:event_BbarangActionPerformed
 
     private void BtransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtransaksiActionPerformed
         // TODO add your handling code here:
+        pUtama.removeAll();
+        pUtama.add(new panelTransaksi());
+        pUtama.revalidate();
+        pUtama.repaint();
     }//GEN-LAST:event_BtransaksiActionPerformed
 
     private void BaboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaboutActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_BaboutActionPerformed
 
     private void BlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlogoutActionPerformed
         // TODO add your handling code here:
+        int pilihan = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        
+        if (pilihan == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
     }//GEN-LAST:event_BlogoutActionPerformed
 
     private void BuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuserActionPerformed
         // TODO add your handling code here:
+        pUtama.removeAll();
+        pUtama.add(new panelUser());
+        pUtama.revalidate();
+        pUtama.repaint();
     }//GEN-LAST:event_BuserActionPerformed
 
     /**
