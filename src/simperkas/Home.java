@@ -4,10 +4,10 @@
  */
 package simperkas;
 
-/**
- *
- * @author Nabila
- */
+import javax.swing.*;
+import kelas.User;
+import kelas.Session;
+
 public class Home extends javax.swing.JFrame {
 
     /**
@@ -15,7 +15,13 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-    }
+        TuserName.setText(Session.getUserName());
+        Tname.setText(Session.getFullName());
+        TuserName.setEditable(false);
+        Tname.setEditable(false);
+        TuserName.setFocusable(false);
+        Tname.setFocusable(false);
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +32,164 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Bberanda = new javax.swing.JButton();
+        pSidebar = new javax.swing.JPanel();
+        Buser = new javax.swing.JButton();
+        Blogout = new javax.swing.JButton();
+        Babout = new javax.swing.JButton();
+        Btransaksi = new javax.swing.JButton();
+        Bbarang = new javax.swing.JButton();
+        Sidebar = new javax.swing.JLabel();
+        TuserName = new javax.swing.JTextField();
+        fullName = new javax.swing.JLabel();
+        Username = new javax.swing.JLabel();
+        Tname = new javax.swing.JTextField();
+        pUtama = new javax.swing.JPanel();
+        panelutama = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Bberanda.setBackground(new java.awt.Color(255, 204, 0));
+        Bberanda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Bberanda.setForeground(new java.awt.Color(51, 0, 153));
+        Bberanda.setText("Beranda");
+        Bberanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BberandaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Bberanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 200, 40));
+
+        pSidebar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Buser.setBackground(new java.awt.Color(255, 204, 0));
+        Buser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Buser.setForeground(new java.awt.Color(51, 0, 153));
+        Buser.setText("User");
+        Buser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuserActionPerformed(evt);
+            }
+        });
+        pSidebar.add(Buser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 200, 40));
+
+        Blogout.setBackground(new java.awt.Color(255, 204, 0));
+        Blogout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Blogout.setForeground(new java.awt.Color(51, 0, 153));
+        Blogout.setText("Logout");
+        Blogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlogoutActionPerformed(evt);
+            }
+        });
+        pSidebar.add(Blogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, 40));
+
+        Babout.setBackground(new java.awt.Color(255, 204, 0));
+        Babout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Babout.setForeground(new java.awt.Color(51, 0, 153));
+        Babout.setText("About");
+        Babout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BaboutActionPerformed(evt);
+            }
+        });
+        pSidebar.add(Babout, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 200, 40));
+
+        Btransaksi.setBackground(new java.awt.Color(255, 204, 0));
+        Btransaksi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Btransaksi.setForeground(new java.awt.Color(51, 0, 153));
+        Btransaksi.setText("Transaksi");
+        Btransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtransaksiActionPerformed(evt);
+            }
+        });
+        pSidebar.add(Btransaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 200, 40));
+
+        Bbarang.setBackground(new java.awt.Color(255, 204, 0));
+        Bbarang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Bbarang.setForeground(new java.awt.Color(51, 0, 153));
+        Bbarang.setText("Barang");
+        Bbarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BbarangActionPerformed(evt);
+            }
+        });
+        pSidebar.add(Bbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 200, 40));
+
+        Sidebar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Desain Side Bar new.png"))); // NOI18N
+        pSidebar.add(Sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(pSidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 600));
+
+        TuserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TuserNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TuserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 220, 30));
+
+        fullName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        fullName.setForeground(new java.awt.Color(255, 255, 255));
+        fullName.setText("Nama Lengkap :");
+        getContentPane().add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, 220, 16));
+
+        Username.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Username.setForeground(new java.awt.Color(255, 255, 255));
+        Username.setText("Username :");
+        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 220, 16));
+
+        Tname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TnameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Tname, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 510, 220, 30));
+
+        pUtama.setLayout(new java.awt.CardLayout());
+
+        panelutama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Utama new.png"))); // NOI18N
+        pUtama.add(panelutama, "card2");
+
+        getContentPane().add(pUtama, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 820, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BberandaActionPerformed
+
+    private void BbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbarangActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_BbarangActionPerformed
+
+    private void BtransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtransaksiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtransaksiActionPerformed
+
+    private void BaboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaboutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BaboutActionPerformed
+
+    private void BlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BlogoutActionPerformed
+
+    private void BuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BuserActionPerformed
+
+    private void TuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TuserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TuserNameActionPerformed
+
+    private void TnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TnameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +227,19 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Babout;
+    private javax.swing.JButton Bbarang;
+    private javax.swing.JButton Bberanda;
+    private javax.swing.JButton Blogout;
+    private javax.swing.JButton Btransaksi;
+    private javax.swing.JButton Buser;
+    private javax.swing.JLabel Sidebar;
+    private javax.swing.JTextField Tname;
+    private javax.swing.JTextField TuserName;
+    private javax.swing.JLabel Username;
+    private javax.swing.JLabel fullName;
+    private javax.swing.JPanel pSidebar;
+    private javax.swing.JPanel pUtama;
+    private javax.swing.JLabel panelutama;
     // End of variables declaration//GEN-END:variables
 }
