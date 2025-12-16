@@ -355,9 +355,9 @@ public class transaksiPerkakas extends koneksi{
             document.add(tandaTangan);
 
             document.close();
-            JOptionPane.showMessageDialog(null, "✅ Laporan berhasil dibuat!\nLokasi: " + fileToSave.getAbsolutePath());
+            JOptionPane.showMessageDialog(null, "Laporan berhasil dibuat!\nLokasi: " + fileToSave.getAbsolutePath());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "❌ Gagal membuat laporan: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Gagal membuat laporan: " + e.getMessage());
             e.printStackTrace();
         }
     }

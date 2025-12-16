@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package simperkas;
+import kelas.koneksi;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLClientInfoException;
+import javax.net.ssl.SSLSession;
+import javax.swing.JOptionPane;
+import kelas.Session;
 
 /**
  *
@@ -26,21 +34,128 @@ public class formLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        tUSERNAME = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tMASUK = new javax.swing.JButton();
+        tRESET = new javax.swing.JButton();
+        tPASSWORD = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        tUSERNAME.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tUSERNAME.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tUSERNAMEActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tUSERNAME);
+        tUSERNAME.setBounds(710, 250, 280, 30);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Password :");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(710, 290, 90, 20);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Username :");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(710, 230, 90, 20);
+
+        tMASUK.setBackground(new java.awt.Color(0, 51, 153));
+        tMASUK.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tMASUK.setForeground(new java.awt.Color(255, 255, 255));
+        tMASUK.setText("LOGIN");
+        tMASUK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tMASUKActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tMASUK);
+        tMASUK.setBounds(710, 360, 280, 40);
+
+        tRESET.setBackground(new java.awt.Color(204, 0, 51));
+        tRESET.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tRESET.setForeground(new java.awt.Color(255, 255, 255));
+        tRESET.setText("RESET");
+        tRESET.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tRESETActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tRESET);
+        tRESET.setBounds(910, 410, 75, 23);
+        getContentPane().add(tPASSWORD);
+        tPASSWORD.setBounds(710, 310, 280, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/simperkas/SIMPERKAS NW.gif"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1100, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tRESETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tRESETActionPerformed
+        int confirm = javax.swing.JOptionPane.showConfirmDialog(
+        this,
+        "Yakin ingin mereset form?",
+        "Konfirmasi Reset",
+        javax.swing.JOptionPane.YES_NO_OPTION
+        );
+        if (confirm == javax.swing.JOptionPane.YES_OPTION){
+            tUSERNAME.setText("");
+            tPASSWORD.setText("");
+            tUSERNAME.requestFocus();
+        }
+    }//GEN-LAST:event_tRESETActionPerformed
+
+    private void tUSERNAMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tUSERNAMEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tUSERNAMEActionPerformed
+
+    private void tMASUKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMASUKActionPerformed
+       String tUSERNAMEInput = tUSERNAME.getText().trim();
+       String tPASSWORDInput = String.valueOf(tPASSWORD()).trim();
+       if (! tUSERNAMEInput.isEmpty() && !tPASSWORDInput.isEmpty()) {
+           try {
+               String sql = "SELECT * FROM user WHERE USERNAME=? AND userPassword=MD5(?) AND userStatus=1";
+               Connection con = koneksi.connect();
+               PreparedStatement ps = con.prepareStatement(sql);
+               ps.setString(1,tUSERNAMEInput);
+               ps.setString(2,tPASSWORDInput);
+               
+               ResultSet rs = ps.executeQuery();
+               if (rs.next()){
+                   String UserName = rs.getString("UserName");
+                   String fullName = rs.getString("userFullName");
+                   
+                   Session.setUserName(UserName);
+                   Session.setFullName(fullName); 
+                   
+                   dispose();
+                   Home mainFrame = new Home();
+                   mainFrame.setVisible(true);
+                   
+                  Home H = new Home();
+                   mainFrame.getContentPane().add(H);
+                   H.SetVisible(true);
+               }else{
+                   JOptionPane.showMessageDialog(null, "Login gagal! Username/Password salah atau akun tidak aktif!");
+                   tPASSWORD.setText("");
+               }
+           } catch (Exception e) {
+               JOptionPane.showMessageDialog(null, "Error koneksi:" + e.getMessage());
+           }
+               
+           
+       }else{
+           JOptionPane.showMessageDialog(null, "Kolom tidak boleh kosong!");
+       }
+    }//GEN-LAST:event_tMASUKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +193,16 @@ public class formLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton tMASUK;
+    private javax.swing.JPasswordField tPASSWORD;
+    private javax.swing.JButton tRESET;
+    private javax.swing.JTextField tUSERNAME;
     // End of variables declaration//GEN-END:variables
+
+    private Object tPASSWORD() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
