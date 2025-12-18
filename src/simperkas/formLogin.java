@@ -45,7 +45,7 @@ public class formLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tUSERNAME.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tUSERNAME.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tUSERNAME.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tUSERNAMEActionPerformed(evt);
@@ -84,6 +84,8 @@ public class formLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tRESET, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 490, 75, -1));
+
+        tPASSWORD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         getContentPane().add(tPASSWORD, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, 260, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Login.gif"))); // NOI18N
@@ -114,7 +116,7 @@ public class formLogin extends javax.swing.JFrame {
 
     private void tMASUKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMASUKActionPerformed
        String tUSERNAMEInput = tUSERNAME.getText().trim();
-       String tPASSWORDInput = String.valueOf(tPASSWORD()).trim();
+       String tPASSWORDInput = String.valueOf(tPASSWORD.getPassword()).trim();
        if (! tUSERNAMEInput.isEmpty() && !tPASSWORDInput.isEmpty()) {
            try {
                String sql = "SELECT * FROM user WHERE USERNAME=? AND userPassword=MD5(?) AND userStatus=1";
@@ -134,10 +136,6 @@ public class formLogin extends javax.swing.JFrame {
                    dispose();
                    Home mainFrame = new Home();
                    mainFrame.setVisible(true);
-                   
-                  Home H = new Home();
-                   mainFrame.getContentPane().add(H);
-                   H.SetVisible(true);
                }else{
                    JOptionPane.showMessageDialog(null, "Login gagal! Username/Password salah atau akun tidak aktif!");
                    tPASSWORD.setText("");
@@ -196,8 +194,4 @@ public class formLogin extends javax.swing.JFrame {
     private javax.swing.JButton tRESET;
     private javax.swing.JTextField tUSERNAME;
     // End of variables declaration//GEN-END:variables
-
-    private Object tPASSWORD() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

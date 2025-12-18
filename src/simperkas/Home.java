@@ -189,8 +189,10 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_TnameActionPerformed
 
     private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed
-        this.dispose();
-        new Home().setVisible(true);
+        pUtama.removeAll();
+        pUtama.add(panelutama);
+        pUtama.revalidate();
+        pUtama.repaint();
     }//GEN-LAST:event_BberandaActionPerformed
 
     /**
@@ -226,10 +228,6 @@ public class Home extends javax.swing.JFrame {
                 new Home().setVisible(true);
             }
         });
-    }
-
-    void SetVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
