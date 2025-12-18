@@ -30,16 +30,153 @@ public class panelUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lNamaSantri = new javax.swing.JLabel();
+        tNamaBarang1 = new javax.swing.JTextField();
+        lNamaSantri1 = new javax.swing.JLabel();
+        tNamaBarang2 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        lNamaSantri2 = new javax.swing.JLabel();
+        tNamaBarang3 = new javax.swing.JTextField();
+        lNamaSantri3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         Bguser = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lNamaSantri.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaSantri.setText("Password");
+        add(lNamaSantri, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
+
+        tNamaBarang1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tNamaBarang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tNamaBarang1ActionPerformed(evt);
+            }
+        });
+        add(tNamaBarang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 330, -1));
+
+        lNamaSantri1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaSantri1.setText("Status          ");
+        add(lNamaSantri1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
+        tNamaBarang2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(tNamaBarang2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 330, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 330, -1));
+
+        lNamaSantri2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaSantri2.setText("Username    ");
+        add(lNamaSantri2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        tNamaBarang3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(tNamaBarang3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 330, -1));
+
+        lNamaSantri3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lNamaSantri3.setText("Full Name    ");
+        add(lNamaSantri3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, -1, -1));
+
+        jButton2.setText("Tambah");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 130, -1));
+
+        jButton1.setText("Tambah");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 130, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 740, 260));
+
+        jButton3.setText("Tambah");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 130, -1));
+
+        jButton4.setText("Tambah");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 130, -1));
 
         Bguser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Transaksi.png"))); // NOI18N
         add(Bguser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 600));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tNamaBarang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaBarang1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tNamaBarang1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bguser;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lNamaSantri;
+    private javax.swing.JLabel lNamaSantri1;
+    private javax.swing.JLabel lNamaSantri2;
+    private javax.swing.JLabel lNamaSantri3;
+    private javax.swing.JTextField tNamaBarang1;
+    private javax.swing.JTextField tNamaBarang2;
+    private javax.swing.JTextField tNamaBarang3;
     // End of variables declaration//GEN-END:variables
 }

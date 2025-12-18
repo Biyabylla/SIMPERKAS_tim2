@@ -179,11 +179,7 @@ public class panel_barang extends javax.swing.JPanel {
         lJumlah.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lJumlah.setText("Jumlah                 :");
         add(lJumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
-
-        tNamaPerkakas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(tNamaPerkakas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 590, 30));
-
-        tJumlah.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(tJumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 590, 30));
 
         tbPerkakas.setModel(new javax.swing.table.DefaultTableModel(
@@ -277,7 +273,24 @@ public class panel_barang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
-        // TODO add your handling code here:
+        try {
+            Perkakas pks = new Perkakas();
+            pks.setIdBarang(buatIdBarang());
+            pks.setNama(tNamaPerkakas.getText());
+            pks.setJumlah(Integer.parseInt(tJumlah.getText()));
+            pks.setJumlahAwal(Integer.parseInt(tJumlah.getText()));
+            
+            pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
+
+
+            pks.tambahBarang();
+
+            reset();
+            loadData();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Isi semua kolom terlebih dahulu!");
+        }
     }//GEN-LAST:event_bTambahActionPerformed
 
     private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
@@ -326,11 +339,17 @@ public class panel_barang extends javax.swing.JPanel {
     }//GEN-LAST:event_bResetActionPerformed
 
     private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
-        // TODO add your handling code here:
+        String keyword = JOptionPane.showInputDialog(this, "Masukkan Nama Perkakas:");
+
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            cariData(keyword.trim());
+        } else {
+            JOptionPane.showMessageDialog(this, "Masukkan kata kunci pencarian terlebih dahulu!");
+        }
     }//GEN-LAST:event_bCariActionPerformed
 
     private void bRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRefreshActionPerformed
-        // TODO add your handling code here:
+        loadData();
     }//GEN-LAST:event_bRefreshActionPerformed
 
     private void tbPerkakasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPerkakasMouseClicked

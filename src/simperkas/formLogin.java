@@ -51,17 +51,17 @@ public class formLogin extends javax.swing.JFrame {
                 tUSERNAMEActionPerformed(evt);
             }
         });
-        getContentPane().add(tUSERNAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 280, 30));
+        getContentPane().add(tUSERNAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 260, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, 90, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 90, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, 90, -1));
 
         tMASUK.setBackground(new java.awt.Color(0, 51, 153));
         tMASUK.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -72,7 +72,7 @@ public class formLogin extends javax.swing.JFrame {
                 tMASUKActionPerformed(evt);
             }
         });
-        getContentPane().add(tMASUK, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, 280, 40));
+        getContentPane().add(tMASUK, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 260, 40));
 
         tRESET.setBackground(new java.awt.Color(204, 0, 51));
         tRESET.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -83,10 +83,10 @@ public class formLogin extends javax.swing.JFrame {
                 tRESETActionPerformed(evt);
             }
         });
-        getContentPane().add(tRESET, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, 75, -1));
-        getContentPane().add(tPASSWORD, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 280, 30));
+        getContentPane().add(tRESET, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 490, 75, -1));
+        getContentPane().add(tPASSWORD, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 310, 260, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/SIMPERKAS NW.gif"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Login.gif"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 600));
 

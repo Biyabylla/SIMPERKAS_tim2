@@ -36,7 +36,6 @@ public class Home extends javax.swing.JFrame {
         pSidebar = new javax.swing.JPanel();
         Buser = new javax.swing.JButton();
         Blogout = new javax.swing.JButton();
-        Babout = new javax.swing.JButton();
         Btransaksi = new javax.swing.JButton();
         Bbarang = new javax.swing.JButton();
         Sidebar = new javax.swing.JLabel();
@@ -72,7 +71,7 @@ public class Home extends javax.swing.JFrame {
                 BuserActionPerformed(evt);
             }
         });
-        pSidebar.add(Buser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 200, 40));
+        pSidebar.add(Buser, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 200, 40));
 
         Blogout.setBackground(new java.awt.Color(255, 204, 0));
         Blogout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -84,17 +83,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
         pSidebar.add(Blogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, 40));
-
-        Babout.setBackground(new java.awt.Color(255, 204, 0));
-        Babout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Babout.setForeground(new java.awt.Color(51, 0, 153));
-        Babout.setText("About");
-        Babout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BaboutActionPerformed(evt);
-            }
-        });
-        pSidebar.add(Babout, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 200, 40));
 
         Btransaksi.setBackground(new java.awt.Color(255, 204, 0));
         Btransaksi.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -132,7 +120,7 @@ public class Home extends javax.swing.JFrame {
 
         fullName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         fullName.setForeground(new java.awt.Color(255, 255, 255));
-        fullName.setText("Nama Lengkap :");
+        fullName.setText("Full Name   :");
         getContentPane().add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, 220, 16));
 
         Username.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -158,29 +146,38 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BberandaActionPerformed
-
     private void BbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbarangActionPerformed
-        // TODO add your handling code here:
-
+        pUtama.removeAll();
+        pUtama.add(new panel_barang());
+        pUtama.revalidate();
+        pUtama.repaint();
     }//GEN-LAST:event_BbarangActionPerformed
 
     private void BtransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtransaksiActionPerformed
-        // TODO add your handling code here:
+        pUtama.removeAll();
+        pUtama.add(new panelTransaksii());
+        pUtama.revalidate();
+        pUtama.repaint();
     }//GEN-LAST:event_BtransaksiActionPerformed
 
-    private void BaboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaboutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BaboutActionPerformed
-
     private void BlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlogoutActionPerformed
-        // TODO add your handling code here:
+           int pilihan = JOptionPane.showConfirmDialog(
+        this,
+        "Apakah Anda yakin ingin keluar?",
+        "Konfirmasi",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.PLAIN_MESSAGE
+    );
+    if (pilihan == JOptionPane.YES_OPTION) {
+        System.exit(0);
+    }
     }//GEN-LAST:event_BlogoutActionPerformed
 
     private void BuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuserActionPerformed
-        // TODO add your handling code here:
+        pUtama.removeAll();
+        pUtama.add(new panelUser());
+        pUtama.revalidate();
+        pUtama.repaint();
     }//GEN-LAST:event_BuserActionPerformed
 
     private void TuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TuserNameActionPerformed
@@ -190,6 +187,11 @@ public class Home extends javax.swing.JFrame {
     private void TnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TnameActionPerformed
+
+    private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed
+        this.dispose();
+        new Home().setVisible(true);
+    }//GEN-LAST:event_BberandaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,7 +233,6 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Babout;
     private javax.swing.JButton Bbarang;
     private javax.swing.JButton Bberanda;
     private javax.swing.JButton Blogout;
