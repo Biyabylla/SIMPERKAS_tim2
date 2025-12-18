@@ -120,12 +120,12 @@ public class Home extends javax.swing.JFrame {
 
         fullName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         fullName.setForeground(new java.awt.Color(255, 255, 255));
-        fullName.setText("Full Name   :");
+        fullName.setText("Full Name ");
         getContentPane().add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, 220, 16));
 
         Username.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Username.setForeground(new java.awt.Color(255, 255, 255));
-        Username.setText("Username :");
+        Username.setText("Username ");
         getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 220, 16));
 
         Tname.addActionListener(new java.awt.event.ActionListener() {

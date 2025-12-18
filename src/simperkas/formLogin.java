@@ -91,6 +91,7 @@ public class formLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tRESETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tRESETActionPerformed

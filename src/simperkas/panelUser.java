@@ -4,13 +4,11 @@
  */
 package simperkas;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
+import javax.swing.table.DefaultTableModel;
+import kelas.User;
 
 public class panelUser extends javax.swing.JPanel {
 
@@ -19,6 +17,41 @@ public class panelUser extends javax.swing.JPanel {
      */
     public panelUser() {
         initComponents();
+        load_table();
+        reset();
+    }
+    
+    void reset() {
+        tUsername.setText("");
+        tPassword.setText("");
+        tFullName.setText("");
+        cbStatus.setSelectedIndex(0);
+        tUsername.setEditable(true);
+    }
+
+    void load_table() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Username");
+        model.addColumn("Full Name");
+        model.addColumn("Status");
+
+        try {
+            User usr = new User();
+            ResultSet result = usr.tampilUser();
+
+            while (result.next()) {
+                String status = (result.getInt("userStatus") == 1) ? "Active" : "Inactive";
+                model.addRow(new Object[]{
+                    result.getString("userName"),
+                    result.getString("userFullName"),
+                    status
+                });
+            }
+
+            tbUser.setModel(model);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
+        }
     }
 
     /**
@@ -30,79 +63,85 @@ public class panelUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lNamaSantri = new javax.swing.JLabel();
-        tNamaBarang1 = new javax.swing.JTextField();
-        lNamaSantri1 = new javax.swing.JLabel();
-        tNamaBarang2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        lNamaSantri2 = new javax.swing.JLabel();
-        tNamaBarang3 = new javax.swing.JTextField();
-        lNamaSantri3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        lPassword = new javax.swing.JLabel();
+        tPassword = new javax.swing.JTextField();
+        lStatus = new javax.swing.JLabel();
+        tUsername = new javax.swing.JTextField();
+        cbStatus = new javax.swing.JComboBox<>();
+        lUsername = new javax.swing.JLabel();
+        tFullName = new javax.swing.JTextField();
+        lFullName = new javax.swing.JLabel();
+        bTambah = new javax.swing.JButton();
+        bReset = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tbUser = new javax.swing.JTable();
+        bHapus = new javax.swing.JButton();
+        bUbah = new javax.swing.JButton();
         Bguser = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lNamaSantri.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lNamaSantri.setText("Password");
-        add(lNamaSantri, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
+        lPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lPassword.setText("Password");
+        add(lPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
 
-        tNamaBarang1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tNamaBarang1.addActionListener(new java.awt.event.ActionListener() {
+        tPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tNamaBarang1ActionPerformed(evt);
+                tPasswordActionPerformed(evt);
             }
         });
-        add(tNamaBarang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 330, -1));
+        add(tPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 330, -1));
 
-        lNamaSantri1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lNamaSantri1.setText("Status          ");
-        add(lNamaSantri1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        lStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lStatus.setText("Status          ");
+        add(lStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        tNamaBarang2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(tNamaBarang2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 330, -1));
+        tUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(tUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 330, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        cbStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbStatusActionPerformed(evt);
             }
         });
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 330, -1));
+        add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 330, -1));
 
-        lNamaSantri2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lNamaSantri2.setText("Username    ");
-        add(lNamaSantri2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        lUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lUsername.setText("Username    ");
+        add(lUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        tNamaBarang3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(tNamaBarang3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 330, -1));
+        tFullName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        add(tFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 330, -1));
 
-        lNamaSantri3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lNamaSantri3.setText("Full Name    ");
-        add(lNamaSantri3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, -1, -1));
+        lFullName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lFullName.setText("Full Name    ");
+        add(lFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, -1, -1));
 
-        jButton2.setText("Tambah");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bTambah.setBackground(new java.awt.Color(0, 51, 153));
+        bTambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bTambah.setForeground(new java.awt.Color(255, 255, 255));
+        bTambah.setText("Tambah");
+        bTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bTambahActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 130, -1));
+        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 130, -1));
 
-        jButton1.setText("Tambah");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bReset.setBackground(new java.awt.Color(0, 51, 153));
+        bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bReset.setForeground(new java.awt.Color(255, 255, 255));
+        bReset.setText("Reset");
+        bReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bResetActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 130, -1));
+        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 130, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -113,70 +152,168 @@ public class panelUser extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbUserMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbUser);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 740, 260));
 
-        jButton3.setText("Tambah");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bHapus.setBackground(new java.awt.Color(204, 0, 51));
+        bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bHapus.setForeground(new java.awt.Color(255, 255, 255));
+        bHapus.setText("Hapus");
+        bHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bHapusActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 130, -1));
+        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 130, -1));
 
-        jButton4.setText("Tambah");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bUbah.setBackground(new java.awt.Color(0, 51, 153));
+        bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bUbah.setForeground(new java.awt.Color(255, 255, 255));
+        bUbah.setText("Ubah");
+        bUbah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bUbahActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 130, -1));
+        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 130, -1));
 
         Bguser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Transaksi.png"))); // NOI18N
         add(Bguser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 600));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tNamaBarang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNamaBarang1ActionPerformed
+    private void tPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tNamaBarang1ActionPerformed
+    }//GEN-LAST:event_tPasswordActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbStatusActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
+        tUsername.setText(null);
+        tPassword.setText(null);
+        tFullName.setText(null);
+        cbStatus.setSelectedItem(0);
+    }//GEN-LAST:event_bResetActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
+        if (tUsername.getText().trim().isEmpty() ||
+        tPassword.getText().trim().isEmpty() ||
+        tFullName.getText().trim().isEmpty()) {
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(this, 
+            "Semua field harus diisi!", 
+            "Peringatan", 
+            JOptionPane.WARNING_MESSAGE);
+        return; 
+    }
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    try {
+        User usr = new User();
+        usr.setUserName(tUsername.getText());
+        usr.setUserPassword(tPassword.getText());
+        usr.setUserFullName(tFullName.getText());
+        usr.setUserStatus(cbStatus.getSelectedIndex() == 0 ? 1 : 0);
+
+        usr.tambahUser();   
+        load_table();        
+        reset();             
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage());
+    }
+    }//GEN-LAST:event_bTambahActionPerformed
+
+    private void bHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHapusActionPerformed
+        String username = tUsername.getText().trim();
+
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Pilih user yang ingin dihapus!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                null,
+                "Apakah Anda yakin ingin menghapus user \"" + username + "\"?",
+                "Konfirmasi Hapus",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                User usr = new User();
+                usr.setUserName(username);
+                usr.hapusUser();
+                JOptionPane.showMessageDialog(null, "User berhasil dihapus!");
+                reset();
+                load_table();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "User gagal dihapus. Periksa koneksi database!");
+            }
+        }
+    }//GEN-LAST:event_bHapusActionPerformed
+
+    private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
+        String username = tUsername.getText().trim();
+        String password = tPassword.getText().trim();
+        String fullName = tFullName.getText().trim();
+        Object selectedStatus = cbStatus.getSelectedItem();
+
+        if (username.isEmpty() || password.isEmpty() || fullName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Semua field harus diisi!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        User usr = new User();
+        usr.setUserName(username);
+        usr.setUserPassword(password);
+        usr.setUserFullName(fullName);
+        usr.setUserStatus("Active".equals(selectedStatus) ? 1 : 0);
+
+        try {
+            usr.ubahUser();
+            JOptionPane.showMessageDialog(null, "Data berhasil diubah!");
+            reset();
+            load_table();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Data gagal diubah. Periksa input atau koneksi database!");
+        }
+    }//GEN-LAST:event_bUbahActionPerformed
+
+    private void tbUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUserMouseClicked
+        int baris = tbUser.rowAtPoint(evt.getPoint());
+        String userName = tbUser.getValueAt(baris, 0).toString();
+        String fullName = tbUser.getValueAt(baris, 1).toString();
+        String status = tbUser.getValueAt(baris, 2).toString();
+
+        tUsername.setText(userName);
+        tFullName.setText(fullName);
+        cbStatus.setSelectedItem(status);
+
+        tUsername.setEditable(false);
+    }//GEN-LAST:event_tbUserMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bguser;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton bHapus;
+    private javax.swing.JButton bReset;
+    private javax.swing.JButton bTambah;
+    private javax.swing.JButton bUbah;
+    private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lNamaSantri;
-    private javax.swing.JLabel lNamaSantri1;
-    private javax.swing.JLabel lNamaSantri2;
-    private javax.swing.JLabel lNamaSantri3;
-    private javax.swing.JTextField tNamaBarang1;
-    private javax.swing.JTextField tNamaBarang2;
-    private javax.swing.JTextField tNamaBarang3;
+    private javax.swing.JLabel lFullName;
+    private javax.swing.JLabel lPassword;
+    private javax.swing.JLabel lStatus;
+    private javax.swing.JLabel lUsername;
+    private javax.swing.JTextField tFullName;
+    private javax.swing.JTextField tPassword;
+    private javax.swing.JTextField tUsername;
+    private javax.swing.JTable tbUser;
     // End of variables declaration//GEN-END:variables
 }
