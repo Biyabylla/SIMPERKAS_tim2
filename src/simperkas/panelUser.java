@@ -20,7 +20,7 @@ public class panelUser extends javax.swing.JPanel {
         load_table();
         reset();
     }
-    
+
     void reset() {
         tUsername.setText("");
         tPassword.setText("");
@@ -37,17 +37,15 @@ public class panelUser extends javax.swing.JPanel {
 
         try {
             User usr = new User();
-            ResultSet result = usr.tampilUser();
+            ResultSet rs = usr.tampilUser();
 
-            while (result.next()) {
-                String status = (result.getInt("userStatus") == 1) ? "Active" : "Inactive";
+            while (rs.next()) {
                 model.addRow(new Object[]{
-                    result.getString("userName"),
-                    result.getString("userFullName"),
-                    status
+                    rs.getString("userName"),
+                    rs.getString("userFullName"),
+                    rs.getInt("userStatus") == 1 ? "Active" : "Inactive"
                 });
             }
-
             tbUser.setModel(model);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
@@ -199,34 +197,34 @@ public class panelUser extends javax.swing.JPanel {
         tUsername.setText(null);
         tPassword.setText(null);
         tFullName.setText(null);
-        cbStatus.setSelectedItem(0);
+        cbStatus.setSelectedIndex(0);
     }//GEN-LAST:event_bResetActionPerformed
 
     private void bTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTambahActionPerformed
-        if (tUsername.getText().trim().isEmpty() ||
-        tPassword.getText().trim().isEmpty() ||
-        tFullName.getText().trim().isEmpty()) {
+        if (tUsername.getText().isEmpty()
+                || tPassword.getText().isEmpty()
+                || tFullName.getText().isEmpty()) {
 
-        JOptionPane.showMessageDialog(this, 
-            "Semua field harus diisi!", 
-            "Peringatan", 
-            JOptionPane.WARNING_MESSAGE);
-        return; 
-    }
+            JOptionPane.showMessageDialog(this,
+                    "Semua field harus diisi!",
+                    "Peringatan",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-    try {
-        User usr = new User();
-        usr.setUserName(tUsername.getText());
-        usr.setUserPassword(tPassword.getText());
-        usr.setUserFullName(tFullName.getText());
-        usr.setUserStatus(cbStatus.getSelectedIndex() == 0 ? 1 : 0);
+        try {
+            User usr = new User();
+            usr.setUserName(tUsername.getText());
+            usr.setUserPassword(tPassword.getText());
+            usr.setUserFullName(tFullName.getText());
+            usr.setUserStatus(cbStatus.getSelectedIndex() == 0 ? 1 : 0);
 
-        usr.tambahUser();   
-        load_table();        
-        reset();             
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage());
-    }
+            usr.tambahUser();
+            load_table();
+            reset();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage());
+        }
     }//GEN-LAST:event_bTambahActionPerformed
 
     private void bHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHapusActionPerformed
@@ -239,7 +237,7 @@ public class panelUser extends javax.swing.JPanel {
 
         int confirm = JOptionPane.showConfirmDialog(
                 null,
-                "Apakah Anda yakin ingin menghapus user \"" + username + "\"?",
+                "Apakah Anda yakin ingin menghapus user ini? \"" + username + "\"?",
                 "Konfirmasi Hapus",
                 JOptionPane.YES_NO_OPTION
         );
@@ -253,48 +251,40 @@ public class panelUser extends javax.swing.JPanel {
                 reset();
                 load_table();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "User gagal dihapus. Periksa koneksi database!");
+                JOptionPane.showMessageDialog(null, "Gagal menghapus user!");
             }
         }
     }//GEN-LAST:event_bHapusActionPerformed
 
     private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
-        String username = tUsername.getText().trim();
-        String password = tPassword.getText().trim();
-        String fullName = tFullName.getText().trim();
-        Object selectedStatus = cbStatus.getSelectedItem();
 
-        if (username.isEmpty() || password.isEmpty() || fullName.isEmpty()) {
+        if (tUsername.getText().isEmpty() || tFullName.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Semua field harus diisi!", "Peringatan", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        User usr = new User();
-        usr.setUserName(username);
-        usr.setUserPassword(password);
-        usr.setUserFullName(fullName);
-        usr.setUserStatus("Active".equals(selectedStatus) ? 1 : 0);
-
         try {
+            User usr = new User();
+            usr.setUserName(tUsername.getText());
+            usr.setUserFullName(tFullName.getText());
+            usr.setUserStatus(cbStatus.getSelectedIndex() == 0 ? 1 : 0);
+            if (!tPassword.getText().trim().isEmpty()) {
+                usr.setUserPassword(tPassword.getText());
+            }
             usr.ubahUser();
-            JOptionPane.showMessageDialog(null, "Data berhasil diubah!");
-            reset();
+            JOptionPane.showMessageDialog(this, "Data berhail diubah!");
             load_table();
+            reset();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Data gagal diubah. Periksa input atau koneksi database!");
+            JOptionPane.showMessageDialog(this, "Gagal mengubah data!");
         }
     }//GEN-LAST:event_bUbahActionPerformed
 
     private void tbUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUserMouseClicked
-        int baris = tbUser.rowAtPoint(evt.getPoint());
-        String userName = tbUser.getValueAt(baris, 0).toString();
-        String fullName = tbUser.getValueAt(baris, 1).toString();
-        String status = tbUser.getValueAt(baris, 2).toString();
-
-        tUsername.setText(userName);
-        tFullName.setText(fullName);
-        cbStatus.setSelectedItem(status);
-
+        int row = tbUser.getSelectedRow();
+        tUsername.setText(tbUser.getValueAt(row, 0).toString());
+        tFullName.setText(tbUser.getValueAt(row, 1).toString());
+        cbStatus.setSelectedItem(tbUser.getValueAt(row, 2).toString());
         tUsername.setEditable(false);
     }//GEN-LAST:event_tbUserMouseClicked
 

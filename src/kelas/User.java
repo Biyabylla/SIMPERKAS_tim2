@@ -92,47 +92,31 @@ public class User {
         }
     }
 
-    public void ubahUser() {
-    try {
-        Connection conn = koneksi.connect(); 
-        String pwd = this.userPassword;
-        if (pwd == null || pwd.isEmpty()) {
-            String sqlOld = "SELECT userPassword FROM user WHERE userName=?";
-            PreparedStatement pst = conn.prepareStatement(sqlOld);
-            pst.setString(1, this.userName);
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                pwd = rs.getString("userPassword");
-            }
-            rs.close();
-            pst.close();
-        }
+ public void ubahUser() throws SQLException {
+        PreparedStatement ps;
 
-        String sql = "UPDATE user SET userPassword=?, userFullName=?, userStatus=? WHERE userName=?";
-        PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setString(1, pwd);
-        pst.setString(2, this.userFullName);
-        pst.setInt(3, this.userStatus);
-        pst.setString(4, this.userName);
-        pst.executeUpdate();
-        pst.close();
-        JOptionPane.showMessageDialog(null, "Data berhasil diubah");
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Gagal mengubah data: " + e.getMessage());
-    }
-}
-
-    public ResultSet tampilUser() {
-        try {
-            query = "SELECT * FROM user";
-            st = conn.createStatement();
-            rs = st.executeQuery(query);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Data gagal ditampilkan!");
+        if (userPassword == null || userPassword.isEmpty()) {
+            String sql = "UPDATE user SET userFullName=?, userStatus=? WHERE userName=?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userFullName);
+            ps.setInt(2, userStatus);
+            ps.setString(3, userName);
+        } else {
+            String sql = "UPDATE user SET userPassword=MD5(?), userFullName=?, userStatus=? WHERE userName=?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, userPassword);
+            ps.setString(2, userFullName);
+            ps.setInt(3, userStatus);
+            ps.setString(4, userName);
         }
-        return rs;
+        ps.executeUpdate();
+        ps.close();
     }
 
+    public ResultSet tampilUser() throws SQLException {
+        Statement st = conn.createStatement();
+        return st.executeQuery("SELECT * FROM user");
+    }
     public void login() {
         try {
             query = "SELECT * FROM user WHERE userName = ? AND userPassword = MD5(?)";

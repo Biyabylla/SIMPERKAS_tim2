@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package simperkas;
+
 import kelas.koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -98,12 +99,12 @@ public class formLogin extends javax.swing.JFrame {
 
     private void tRESETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tRESETActionPerformed
         int confirm = javax.swing.JOptionPane.showConfirmDialog(
-        this,
-        "Yakin ingin mereset form?",
-        "Konfirmasi Reset",
-        javax.swing.JOptionPane.YES_NO_OPTION
+                this,
+                "Yakin ingin mereset form?",
+                "Konfirmasi Reset",
+                javax.swing.JOptionPane.YES_NO_OPTION
         );
-        if (confirm == javax.swing.JOptionPane.YES_OPTION){
+        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
             tUSERNAME.setText("");
             tPASSWORD.setText("");
             tUSERNAME.requestFocus();
@@ -115,39 +116,38 @@ public class formLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_tUSERNAMEActionPerformed
 
     private void tMASUKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMASUKActionPerformed
-       String tUSERNAMEInput = tUSERNAME.getText().trim();
-       String tPASSWORDInput = String.valueOf(tPASSWORD.getPassword()).trim();
-       if (! tUSERNAMEInput.isEmpty() && !tPASSWORDInput.isEmpty()) {
-           try {
-               String sql = "SELECT * FROM user WHERE USERNAME=? AND userPassword=MD5(?) AND userStatus=1";
-               Connection con = koneksi.connect();
-               PreparedStatement ps = con.prepareStatement(sql);
-               ps.setString(1,tUSERNAMEInput);
-               ps.setString(2,tPASSWORDInput);
-               
-               ResultSet rs = ps.executeQuery();
-               if (rs.next()){
-                   String UserName = rs.getString("UserName");
-                   String fullName = rs.getString("userFullName");
-                   
-                   Session.setUserName(UserName);
-                   Session.setFullName(fullName); 
-                   
-                   dispose();
-                   Home mainFrame = new Home();
-                   mainFrame.setVisible(true);
-               }else{
-                   JOptionPane.showMessageDialog(null, "Login gagal! Username/Password salah atau akun tidak aktif!");
-                   tPASSWORD.setText("");
-               }
-           } catch (Exception e) {
-               JOptionPane.showMessageDialog(null, "Error koneksi:" + e.getMessage());
-           }
-               
-           
-       }else{
-           JOptionPane.showMessageDialog(null, "Kolom tidak boleh kosong!");
-       }
+        String tUSERNAMEInput = tUSERNAME.getText().trim();
+        String tPASSWORDInput = String.valueOf(tPASSWORD.getPassword()).trim();
+        if (!tUSERNAMEInput.isEmpty() && !tPASSWORDInput.isEmpty()) {
+            try {
+                String sql = "SELECT * FROM user WHERE userName=? AND userPassword=MD5(?) AND userStatus=1";
+                Connection con = koneksi.connect();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, tUSERNAMEInput);
+                ps.setString(2, tPASSWORDInput);
+
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    String userName = rs.getString("userName");
+                    String fullName = rs.getString("userFullName");
+
+                    Session.setUserName(userName);
+                    Session.setFullName(fullName);
+
+                    dispose();
+                    Home mainFrame = new Home();
+                    mainFrame.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login gagal! Username/Password salah atau akun tidak aktif!");
+                    tPASSWORD.setText("");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error koneksi:" + e.getMessage());
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Kolom tidak boleh kosong!");
+        }
     }//GEN-LAST:event_tMASUKActionPerformed
 
     /**

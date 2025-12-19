@@ -97,15 +97,14 @@ public class Perkakas extends koneksi {
     }
 
     public void ubahBarang() {
-        query = "UPDATE barang SET nama_barang=?, "
-                + "jumlah=?, jumlah_awal=?, status=? WHERE id_barang=?";
+        query = "UPDATE barang SET nama_barang=?, jumlah=?, status=? WHERE id_barang=?";
+
         try {
             ps = Koneksi.prepareStatement(query);
             ps.setString(1, nama);
             ps.setInt(2, jumlah);
-            ps.setInt(3, jumlah_awal);
-            ps.setString(4, status);
-            ps.setString(5, id);
+            ps.setString(3, status);
+            ps.setString(4, id);
 
             ps.executeUpdate();
             ps.close();

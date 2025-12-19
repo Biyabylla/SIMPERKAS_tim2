@@ -21,7 +21,7 @@ public class Home extends javax.swing.JFrame {
         Tname.setEditable(false);
         TuserName.setFocusable(false);
         Tname.setFocusable(false);
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -161,16 +161,16 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_BtransaksiActionPerformed
 
     private void BlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlogoutActionPerformed
-           int pilihan = JOptionPane.showConfirmDialog(
-        this,
-        "Apakah Anda yakin ingin keluar?",
-        "Konfirmasi",
-        JOptionPane.YES_NO_OPTION,
-        JOptionPane.PLAIN_MESSAGE
-    );
-    if (pilihan == JOptionPane.YES_OPTION) {
-        System.exit(0);
-    }
+        int pilihan = JOptionPane.showConfirmDialog(
+                this,
+                "Apakah Anda yakin ingin keluar?",
+                "Konfirmasi",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE
+        );
+        if (pilihan == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_BlogoutActionPerformed
 
     private void BuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuserActionPerformed
@@ -190,7 +190,7 @@ public class Home extends javax.swing.JFrame {
 
     private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed
         pUtama.removeAll();
-        pUtama.add(panelutama);
+        pUtama.add(new panelBerandaa());
         pUtama.revalidate();
         pUtama.repaint();
     }//GEN-LAST:event_BberandaActionPerformed

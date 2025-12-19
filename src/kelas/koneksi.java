@@ -17,7 +17,7 @@ public class koneksi {
 
     public static Connection connect() {
         try {
-            String url = "jdbc:mysql://localhost:3306/simperkas_test";
+            String url = "jdbc:mysql://localhost:3306/simperkas";
             String username = "root";
             String pass = "BismillahNabila#CUMLAUDE123";
             mysqlconfig = DriverManager.getConnection(url, username, pass);
