@@ -211,7 +211,7 @@ public class panel_barang extends javax.swing.JPanel {
                 bTambahActionPerformed(evt);
             }
         });
-        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 140, 30));
+        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 160, 30));
 
         bUbah.setBackground(new java.awt.Color(0, 51, 153));
         bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -222,7 +222,7 @@ public class panel_barang extends javax.swing.JPanel {
                 bUbahActionPerformed(evt);
             }
         });
-        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 150, 30));
+        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 180, 30));
 
         bRefresh.setBackground(new java.awt.Color(0, 51, 153));
         bRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -244,7 +244,7 @@ public class panel_barang extends javax.swing.JPanel {
                 bResetActionPerformed(evt);
             }
         });
-        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 130, 30));
+        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 180, 30));
 
         bHapus.setBackground(new java.awt.Color(204, 0, 51));
         bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -255,7 +255,7 @@ public class panel_barang extends javax.swing.JPanel {
                 bHapusActionPerformed(evt);
             }
         });
-        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 140, 30));
+        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 170, 30));
 
         bCari.setBackground(new java.awt.Color(0, 51, 153));
         bCari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

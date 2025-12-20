@@ -89,14 +89,14 @@ public class panelUser extends javax.swing.JPanel {
                 tPasswordActionPerformed(evt);
             }
         });
-        add(tPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 330, -1));
+        add(tPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 330, 30));
 
         lStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lStatus.setText("Status          ");
         add(lStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         tUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(tUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 330, -1));
+        add(tUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 330, 30));
 
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
         cbStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -104,14 +104,14 @@ public class panelUser extends javax.swing.JPanel {
                 cbStatusActionPerformed(evt);
             }
         });
-        add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 330, -1));
+        add(cbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 330, 30));
 
         lUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lUsername.setText("Username    ");
         add(lUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         tFullName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(tFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 330, -1));
+        add(tFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 330, 30));
 
         lFullName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lFullName.setText("Full Name    ");
@@ -126,7 +126,7 @@ public class panelUser extends javax.swing.JPanel {
                 bTambahActionPerformed(evt);
             }
         });
-        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 130, -1));
+        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 170, 30));
 
         bReset.setBackground(new java.awt.Color(0, 51, 153));
         bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -137,7 +137,7 @@ public class panelUser extends javax.swing.JPanel {
                 bResetActionPerformed(evt);
             }
         });
-        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 130, -1));
+        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 190, 30));
 
         tbUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,7 +157,7 @@ public class panelUser extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbUser);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 740, 260));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 740, 260));
 
         bHapus.setBackground(new java.awt.Color(204, 0, 51));
         bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -168,7 +168,7 @@ public class panelUser extends javax.swing.JPanel {
                 bHapusActionPerformed(evt);
             }
         });
-        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 130, -1));
+        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 170, 30));
 
         bUbah.setBackground(new java.awt.Color(0, 51, 153));
         bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -179,7 +179,7 @@ public class panelUser extends javax.swing.JPanel {
                 bUbahActionPerformed(evt);
             }
         });
-        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 130, -1));
+        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 180, 30));
 
         Bguser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Transaksi.png"))); // NOI18N
         add(Bguser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 600));

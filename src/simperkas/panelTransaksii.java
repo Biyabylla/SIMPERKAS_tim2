@@ -194,7 +194,7 @@ public class panelTransaksii extends javax.swing.JPanel {
         add(lJumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
 
         tNamaBarang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(tNamaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 250, -1));
+        add(tNamaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 340, -1));
 
         lNamaBarang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lNamaBarang.setText("Nama Barang                :");
@@ -219,7 +219,7 @@ public class panelTransaksii extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableTransaksi);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 740, 250));
-        add(jdcTgl_Pinjam, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 180, -1));
+        add(jdcTgl_Pinjam, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 198, 180, -1));
         add(jdcTgl_Kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 180, -1));
 
         lWaktuPinjam.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -239,7 +239,7 @@ public class panelTransaksii extends javax.swing.JPanel {
                 bTambahActionPerformed(evt);
             }
         });
-        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 110, -1));
+        add(bTambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 160, 30));
 
         bUbah.setBackground(new java.awt.Color(0, 51, 153));
         bUbah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -250,7 +250,7 @@ public class panelTransaksii extends javax.swing.JPanel {
                 bUbahActionPerformed(evt);
             }
         });
-        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 110, -1));
+        add(bUbah, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 180, 30));
 
         bHapus.setBackground(new java.awt.Color(204, 0, 51));
         bHapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -261,7 +261,7 @@ public class panelTransaksii extends javax.swing.JPanel {
                 bHapusActionPerformed(evt);
             }
         });
-        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 110, -1));
+        add(bHapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 190, 30));
 
         bReset.setBackground(new java.awt.Color(0, 51, 153));
         bReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -272,7 +272,7 @@ public class panelTransaksii extends javax.swing.JPanel {
                 bResetActionPerformed(evt);
             }
         });
-        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 110, -1));
+        add(bReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 180, 30));
 
         bCetakPDF.setBackground(new java.awt.Color(0, 51, 153));
         bCetakPDF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

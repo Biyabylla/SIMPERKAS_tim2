@@ -227,6 +227,19 @@ public class transaksiPerkakas extends koneksi{
                 ps.setString(3, idBarang);
                 ps.executeUpdate();
             }
+            String cekStok = "SELECT jumlah FROM barang WHERE id_barang=?";
+        try (PreparedStatement ps = conn.prepareStatement(cekStok)) {
+            ps.setString(1, idBarang);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next() && rs.getInt("jumlah") == 0) {
+                    String updateStatus = "UPDATE barang SET status='Tidak Tersedia' WHERE id_barang=?";
+                    try (PreparedStatement ps2 = conn.prepareStatement(updateStatus)) {
+                        ps2.setString(1, idBarang);
+                        ps2.executeUpdate();
+                    }
+                }
+            }
+        }
 
 
             return true;

@@ -4,24 +4,22 @@
  */
 package simperkas;
 
+import java.awt.CardLayout;
 import javax.swing.*;
 import kelas.User;
 import kelas.Session;
 
 public class Home extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
-        TuserName.setText(Session.getUserName());
-        Tname.setText(Session.getFullName());
-        TuserName.setEditable(false);
-        Tname.setEditable(false);
-        TuserName.setFocusable(false);
-        Tname.setFocusable(false);
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,10 +37,6 @@ public class Home extends javax.swing.JFrame {
         Btransaksi = new javax.swing.JButton();
         Bbarang = new javax.swing.JButton();
         Sidebar = new javax.swing.JLabel();
-        TuserName = new javax.swing.JTextField();
-        fullName = new javax.swing.JLabel();
-        Username = new javax.swing.JLabel();
-        Tname = new javax.swing.JTextField();
         pUtama = new javax.swing.JPanel();
         panelutama = new javax.swing.JLabel();
 
@@ -111,30 +105,6 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(pSidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 600));
 
-        TuserName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TuserNameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(TuserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 220, 30));
-
-        fullName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        fullName.setForeground(new java.awt.Color(255, 255, 255));
-        fullName.setText("Full Name ");
-        getContentPane().add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, 220, 16));
-
-        Username.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Username.setForeground(new java.awt.Color(255, 255, 255));
-        Username.setText("Username ");
-        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 220, 16));
-
-        Tname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TnameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Tname, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 510, 220, 30));
-
         pUtama.setLayout(new java.awt.CardLayout());
 
         panelutama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Utama new.png"))); // NOI18N
@@ -179,14 +149,6 @@ public class Home extends javax.swing.JFrame {
         pUtama.revalidate();
         pUtama.repaint();
     }//GEN-LAST:event_BuserActionPerformed
-
-    private void TuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TuserNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TuserNameActionPerformed
-
-    private void TnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TnameActionPerformed
 
     private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed
         pUtama.removeAll();
@@ -237,10 +199,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton Btransaksi;
     private javax.swing.JButton Buser;
     private javax.swing.JLabel Sidebar;
-    private javax.swing.JTextField Tname;
-    private javax.swing.JTextField TuserName;
-    private javax.swing.JLabel Username;
-    private javax.swing.JLabel fullName;
     private javax.swing.JPanel pSidebar;
     private javax.swing.JPanel pUtama;
     private javax.swing.JLabel panelutama;
