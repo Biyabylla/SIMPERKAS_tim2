@@ -25,6 +25,9 @@ public class panel_barang extends javax.swing.JPanel {
      */
     public panel_barang() {
         initComponents();
+        
+        tJumlah.addActionListener(e -> bTambah.doClick());
+        
     modelTransaksi = new DefaultTableModel();
         modelTransaksi.addColumn("ID Perkakas");
         modelTransaksi.addColumn("Nama Perkakas");

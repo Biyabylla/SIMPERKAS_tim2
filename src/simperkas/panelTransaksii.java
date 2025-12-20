@@ -25,6 +25,10 @@ public class panelTransaksii extends javax.swing.JPanel {
      */
     public panelTransaksii() {
         initComponents();
+        
+        tJumlah.addActionListener(e -> bTambah.doClick());
+        tNoKamar.addActionListener(e -> bTambah.doClick());
+        
         modelTransaksi = new DefaultTableModel(new Object[]{//Membuat struktur kolom tabel
             "ID", "Nama Santri", "Nomor Kamar", "Nama Barang", "Jumlah", "Waktu Pinjam", "Waktu Kembali"
         }, 0);

@@ -19,6 +19,8 @@ public class panelUser extends javax.swing.JPanel {
         initComponents();
         load_table();
         reset();
+        
+        tPassword.addActionListener(e -> bTambah.doClick());
     }
 
     void reset() {
@@ -220,6 +222,7 @@ public class panelUser extends javax.swing.JPanel {
             usr.setUserStatus(cbStatus.getSelectedIndex() == 0 ? 1 : 0);
 
             usr.tambahUser();
+            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan!");
             load_table();
             reset();
         } catch (Exception e) {

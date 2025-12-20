@@ -107,7 +107,7 @@ public class Home extends javax.swing.JFrame {
 
         pUtama.setLayout(new java.awt.CardLayout());
 
-        panelutama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/Panel Utama new.png"))); // NOI18N
+        panelutama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pict/panelHome.png"))); // NOI18N
         pUtama.add(panelutama, "card2");
 
         getContentPane().add(pUtama, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 820, 600));
@@ -148,6 +148,7 @@ public class Home extends javax.swing.JFrame {
         pUtama.add(new panelUser());
         pUtama.revalidate();
         pUtama.repaint();
+        
     }//GEN-LAST:event_BuserActionPerformed
 
     private void BberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BberandaActionPerformed

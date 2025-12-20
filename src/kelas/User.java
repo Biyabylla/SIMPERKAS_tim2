@@ -75,7 +75,6 @@ public class User {
         ps.executeUpdate();
         ps.close();
 
-        JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan!");
     }
 
     public void hapusUser() {
@@ -86,9 +85,7 @@ public class User {
             ps.executeUpdate();
             ps.close();
 
-            JOptionPane.showMessageDialog(null, "Data berhasil dihapus!");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Data gagal dihapus! " + e.getMessage());
         }
     }
 

@@ -24,6 +24,8 @@ public class formLogin extends javax.swing.JFrame {
      */
     public formLogin() {
         initComponents();
+        
+        tPASSWORD.addActionListener(e -> tMASUK.doClick());
     }
 
     /**
