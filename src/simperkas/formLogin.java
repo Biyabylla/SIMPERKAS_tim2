@@ -8,8 +8,6 @@ import kelas.koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLClientInfoException;
-import javax.net.ssl.SSLSession;
 import javax.swing.JOptionPane;
 import kelas.Session;
 
@@ -24,7 +22,7 @@ public class formLogin extends javax.swing.JFrame {
      */
     public formLogin() {
         initComponents();
-        
+
         tPASSWORD.addActionListener(e -> tMASUK.doClick());
     }
 
@@ -141,6 +139,7 @@ public class formLogin extends javax.swing.JFrame {
                     mainFrame.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Login gagal! Username/Password salah atau akun tidak aktif!");
+                    tUSERNAME.setText("");
                     tPASSWORD.setText("");
                 }
             } catch (Exception e) {

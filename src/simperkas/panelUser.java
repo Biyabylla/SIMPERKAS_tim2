@@ -19,7 +19,7 @@ public class panelUser extends javax.swing.JPanel {
         initComponents();
         load_table();
         reset();
-        
+
         tPassword.addActionListener(e -> bTambah.doClick());
     }
 
@@ -275,7 +275,7 @@ public class panelUser extends javax.swing.JPanel {
                 usr.setUserPassword(tPassword.getText());
             }
             usr.ubahUser();
-            JOptionPane.showMessageDialog(this, "Data berhail diubah!");
+            JOptionPane.showMessageDialog(this, "Data berhasil diubah!");
             load_table();
             reset();
         } catch (Exception e) {

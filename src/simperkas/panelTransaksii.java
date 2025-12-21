@@ -507,8 +507,8 @@ public class panelTransaksii extends javax.swing.JPanel {
         }
 
         String msg = rowsDeleted > 0
-                ? "Berhasil mereset transaksi yang sudah dikembalikan."
-                : "Tidak ada transaksi yang sudah dikembalikan untuk dihapus.";
+                ? "Berhasil mereset transaksi yang sudah dikembalikan!"
+                : "Tidak ada transaksi pengembalian yang bisa dihapus!";
         JOptionPane.showMessageDialog(this, msg);
 
         tampilkanData();

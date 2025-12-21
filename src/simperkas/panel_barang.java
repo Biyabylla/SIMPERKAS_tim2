@@ -15,7 +15,6 @@ import static kelas.koneksi.connect;
  *
  * @author Nabila
  */
-
 public class panel_barang extends javax.swing.JPanel {
 
     DefaultTableModel modelTransaksi;
@@ -25,17 +24,16 @@ public class panel_barang extends javax.swing.JPanel {
      */
     public panel_barang() {
         initComponents();
-        
+
         tJumlah.addActionListener(e -> bTambah.doClick());
-        
-    modelTransaksi = new DefaultTableModel();
+
+        modelTransaksi = new DefaultTableModel();
         modelTransaksi.addColumn("ID Perkakas");
         modelTransaksi.addColumn("Nama Perkakas");
         modelTransaksi.addColumn("Jumlah");
         modelTransaksi.addColumn("Status");
 
         tbPerkakas.setModel(modelTransaksi);
-        
 
         loadData();
     }
@@ -282,9 +280,8 @@ public class panel_barang extends javax.swing.JPanel {
             pks.setNama(tNamaPerkakas.getText());
             pks.setJumlah(Integer.parseInt(tJumlah.getText()));
             pks.setJumlahAwal(Integer.parseInt(tJumlah.getText()));
-            
-            pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
 
+            pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
 
             pks.tambahBarang();
 
@@ -297,96 +294,94 @@ public class panel_barang extends javax.swing.JPanel {
     }//GEN-LAST:event_bTambahActionPerformed
 
     private void bUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahActionPerformed
-        int row = tbPerkakas.getSelectedRow(); 
-if (row == -1) { 
-        JOptionPane.showMessageDialog(this, "Pilih data terlebih dahulu!");
-        return;
-    }
-
-    try {
-        String id = tbPerkakas.getValueAt(row, 0).toString();
-        int jumlahSekarang = Integer.parseInt(tbPerkakas.getValueAt(row, 2).toString());
- 
-        Connection conn = connect();
-        PreparedStatement ps = conn.prepareStatement(
-            "SELECT jumlah_awal FROM barang WHERE id_barang=?"
-        );
-        ps.setString(1, id);
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next()) {
-            int jumlahAwal = rs.getInt("jumlah_awal"); 
-            if (jumlahSekarang < jumlahAwal) {
-                JOptionPane.showMessageDialog(this,
-                        "Data tidak dapat diubah!\nSebagian barang masih dipinjam.");
-                return;
-            }
+        int row = tbPerkakas.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data terlebih dahulu!");
+            return;
         }
 
-        Perkakas pks = new Perkakas();
-        pks.setIdBarang(id);
-        pks.setNama(tNamaPerkakas.getText());
-        pks.setJumlah(Integer.parseInt(tJumlah.getText()));
-        pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
+        try {
+            String id = tbPerkakas.getValueAt(row, 0).toString();
+            int jumlahSekarang = Integer.parseInt(tbPerkakas.getValueAt(row, 2).toString());
 
-        pks.ubahBarang();
-        reset();
-        loadData();
+            Connection conn = connect();
+            PreparedStatement ps = conn.prepareStatement(
+                    "SELECT jumlah_awal FROM barang WHERE id_barang=?"
+            );
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Jumlah harus berupa angka!");
-    }
- 
+            if (rs.next()) {
+                int jumlahAwal = rs.getInt("jumlah_awal");
+                if (jumlahSekarang < jumlahAwal) {
+                    JOptionPane.showMessageDialog(this,
+                            "Data tidak dapat diubah!\nSebagian barang masih dipinjam.");
+                    return;
+                }
+            }
+
+            Perkakas pks = new Perkakas();
+            pks.setIdBarang(id);
+            pks.setNama(tNamaPerkakas.getText());
+            pks.setJumlah(Integer.parseInt(tJumlah.getText()));
+            pks.setStatus(pks.getJumlah() > 0 ? "Tersedia" : "Tidak Tersedia");
+
+            pks.ubahBarang();
+            reset();
+            loadData();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Jumlah harus berupa angka!");
+        }
+
     }//GEN-LAST:event_bUbahActionPerformed
 
     private void bHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHapusActionPerformed
-        int row = tbPerkakas.getSelectedRow(); 
-if (row == -1) { 
-        JOptionPane.showMessageDialog(this, "Pilih data terlebih dahulu!");
-        return;
-    }
-
-    try {
-        String id = tbPerkakas.getValueAt(row, 0).toString();
-
-        Connection conn = connect();
-        PreparedStatement ps = conn.prepareStatement(
-            "SELECT jumlah, jumlah_awal, status FROM barang WHERE id_barang=?"
-        );
-        ps.setString(1, id);
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next()) {
-            int jumlah = rs.getInt("jumlah");
-            int jumlahAwal = rs.getInt("jumlah_awal");
-            String status = rs.getString("status");
-
-
-            if (status.equalsIgnoreCase("Tidak Tersedia")) {
-                JOptionPane.showMessageDialog(this,
-                        "Data tidak dapat dihapus!\nBarang masih dipinjam.");
-                return;
-            }
-
-
-            if (jumlah < jumlahAwal) {
-                JOptionPane.showMessageDialog(this,
-                        "Data tidak dapat dihapus!\nSebagian barang masih dipinjam.");
-                return;
-            }
+        int row = tbPerkakas.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Pilih data terlebih dahulu!");
+            return;
         }
 
-        Perkakas pks = new Perkakas();
-        pks.setNama(tbPerkakas.getValueAt(row, 1).toString());
-        pks.Hapus();
+        try {
+            String id = tbPerkakas.getValueAt(row, 0).toString();
 
-        loadData();
-        reset();
+            Connection conn = connect();
+            PreparedStatement ps = conn.prepareStatement(
+                    "SELECT jumlah, jumlah_awal, status FROM barang WHERE id_barang=?"
+            );
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Gagal menghapus data!");
-    }
- 
+            if (rs.next()) {
+                int jumlah = rs.getInt("jumlah");
+                int jumlahAwal = rs.getInt("jumlah_awal");
+                String status = rs.getString("status");
+
+                if (status.equalsIgnoreCase("Tidak Tersedia")) {
+                    JOptionPane.showMessageDialog(this,
+                            "Data tidak dapat dihapus!\nBarang masih dipinjam.");
+                    return;
+                }
+
+                if (jumlah < jumlahAwal) {
+                    JOptionPane.showMessageDialog(this,
+                            "Data tidak dapat dihapus!\nSebagian barang masih dipinjam.");
+                    return;
+                }
+            }
+
+            Perkakas pks = new Perkakas();
+            pks.setNama(tbPerkakas.getValueAt(row, 1).toString());
+            pks.Hapus();
+
+            loadData();
+            reset();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal menghapus data!");
+        }
+
     }//GEN-LAST:event_bHapusActionPerformed
 
     private void bResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResetActionPerformed
@@ -411,7 +406,7 @@ if (row == -1) {
         int row = tbPerkakas.getSelectedRow();
         if (row != -1) {
             tNamaPerkakas.setText(tbPerkakas.getValueAt(row, 1).toString());
-        tJumlah.setText(tbPerkakas.getValueAt(row, 2).toString());
+            tJumlah.setText(tbPerkakas.getValueAt(row, 2).toString());
         }
     }//GEN-LAST:event_tbPerkakasMouseClicked
 
